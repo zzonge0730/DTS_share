@@ -1,0 +1,114 @@
+{
+  "capture_id": "007",
+  "run_dir": "/home/hanmech/DTS_share/data/battery_case/gui_runs/20260410_104243_007_snap_preview/alternative_policy",
+  "variant": "policy_alternative",
+  "variant_label": "policy_alternative",
+  "compare_label": "\ub300\uc548 \uc815\ucc45",
+  "edge_snap": false,
+  "step_mm": 5.0,
+  "snap_mode_overrides": {
+    "U1_right": "constrained_k5",
+    "U2_left": "no_snap",
+    "S3_complex_bottom": "constrained_k5",
+    "S4_right_step": "constrained_k5",
+    "S5_long_bottom_steps": "constrained_k5"
+  },
+  "results": [
+    {
+      "name": "U1_right",
+      "n_poses": 55,
+      "score": {
+        "mean_nn_mm": 0.49285894770754896,
+        "p90_nn_mm": 0.8572260491100587,
+        "max_nn_mm": 2.884040323285523,
+        "min_nn_mm": 0.11185040809871516
+      },
+      "pose_csv": "/home/hanmech/DTS_share/data/battery_case/gui_runs/20260410_104243_007_snap_preview/alternative_policy/U1_right/U1_right_pose.csv",
+      "txt_1100": "/home/hanmech/DTS_share/data/battery_case/gui_runs/20260410_104243_007_snap_preview/alternative_policy/U1_right/U1_right_1100.txt"
+    },
+    {
+      "name": "U2_left",
+      "n_poses": 40,
+      "score": {
+        "mean_nn_mm": 0.9465799405560545,
+        "p90_nn_mm": 1.6482723537524486,
+        "max_nn_mm": 1.954325425932327,
+        "min_nn_mm": 0.20307063133446396
+      },
+      "pose_csv": "/home/hanmech/DTS_share/data/battery_case/gui_runs/20260410_104243_007_snap_preview/alternative_policy/U2_left/U2_left_pose.csv",
+      "txt_1100": "/home/hanmech/DTS_share/data/battery_case/gui_runs/20260410_104243_007_snap_preview/alternative_policy/U2_left/U2_left_1100.txt"
+    },
+    {
+      "name": "S3_complex_bottom",
+      "n_poses": 41,
+      "score": {
+        "mean_nn_mm": 0.6684004048853672,
+        "p90_nn_mm": 1.2179340121989066,
+        "max_nn_mm": 1.679196585103492,
+        "min_nn_mm": 0.19145778435711913
+      },
+      "pose_csv": "/home/hanmech/DTS_share/data/battery_case/gui_runs/20260410_104243_007_snap_preview/alternative_policy/S3_complex_bottom/S3_complex_bottom_pose.csv",
+      "txt_1100": "/home/hanmech/DTS_share/data/battery_case/gui_runs/20260410_104243_007_snap_preview/alternative_policy/S3_complex_bottom/S3_complex_bottom_1100.txt"
+    },
+    {
+      "name": "S4_right_step",
+      "n_poses": 65,
+      "score": {
+        "mean_nn_mm": 0.46086505903767716,
+        "p90_nn_mm": 0.7089200498635317,
+        "max_nn_mm": 1.0491453074216626,
+        "min_nn_mm": 0.11104426431541503
+      },
+      "pose_csv": "/home/hanmech/DTS_share/data/battery_case/gui_runs/20260410_104243_007_snap_preview/alternative_policy/S4_right_step/S4_right_step_pose.csv",
+      "txt_1100": "/home/hanmech/DTS_share/data/battery_case/gui_runs/20260410_104243_007_snap_preview/alternative_policy/S4_right_step/S4_right_step_1100.txt"
+    },
+    {
+      "name": "S5_long_bottom_steps",
+      "n_poses": 115,
+      "score": {
+        "mean_nn_mm": 1.5337369172860786,
+        "p90_nn_mm": 2.1336804788770816,
+        "max_nn_mm": 2.7315051128336187,
+        "min_nn_mm": 0.42532373801973056
+      },
+      "pose_csv": "/home/hanmech/DTS_share/data/battery_case/gui_runs/20260410_104243_007_snap_preview/alternative_policy/S5_long_bottom_steps/S5_long_bottom_steps_pose.csv",
+      "txt_1100": "/home/hanmech/DTS_share/data/battery_case/gui_runs/20260410_104243_007_snap_preview/alternative_policy/S5_long_bottom_steps/S5_long_bottom_steps_1100.txt"
+    }
+  ],
+  "overlay_path": "/home/hanmech/DTS_share/data/battery_case/gui_runs/20260410_104243_007_snap_preview/alternative_policy/overlay.png",
+  "overlay_stats": {
+    "U1_right_pose": {
+      "mapped_points": 55.0,
+      "mean_nn_mm": 0.49289029118426303,
+      "p90_nn_mm": 0.8571733819958625,
+      "max_nn_mm": 2.8839948161542712
+    },
+    "U2_left_pose": {
+      "mapped_points": 40.0,
+      "mean_nn_mm": 0.9465901188007845,
+      "p90_nn_mm": 1.6481119692776927,
+      "max_nn_mm": 1.9541310849280071
+    },
+    "S3_complex_bottom_pose": {
+      "mapped_points": 41.0,
+      "mean_nn_mm": 0.6684267650847606,
+      "p90_nn_mm": 1.217603143842761,
+      "max_nn_mm": 1.6789339526840528
+    },
+    "S4_right_step_pose": {
+      "mapped_points": 65.0,
+      "mean_nn_mm": 0.4608318446285799,
+      "p90_nn_mm": 0.7090920699008368,
+      "max_nn_mm": 1.0491379851409501
+    },
+    "S5_long_bottom_steps_pose": {
+      "mapped_points": 115.0,
+      "mean_nn_mm": 1.5337514236391963,
+      "p90_nn_mm": 2.1334935887063553,
+      "max_nn_mm": 2.7312737919637597
+    }
+  },
+  "overlay_warning": null,
+  "raw_capture_ply": "/mnt/c/Users/hanmech/Desktop/DTS_image/captures/reg/point_cloud_20260406_133136_007.ply",
+  "rgb_path": "/mnt/c/Users/hanmech/Desktop/DTS_image/captures/reg/rgb_image_20260406_133136_007.png"
+}

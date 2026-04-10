@@ -1,0 +1,32 @@
+{
+  "capture_id": "007",
+  "preview_root": "/home/hanmech/DTS_share/data/battery_case/gui_runs/20260410_104243_007_snap_preview",
+  "baseline_metrics": {
+    "avg_mean_nn_mm": 1.0085346995098998,
+    "avg_p90_nn_mm": 1.3044225529090874,
+    "worst_max_nn_mm": 3.215230993246376,
+    "total_poses": 299.0,
+    "avg_centerline_p90_mm": Infinity,
+    "avg_tangent_p90_deg": Infinity,
+    "avg_corridor_inlier_ratio": 0.0,
+    "corridor_pass": false
+  },
+  "corrected_metrics": {
+    "avg_mean_nn_mm": 0.8204882538945453,
+    "avg_p90_nn_mm": 1.3132065887604054,
+    "worst_max_nn_mm": 2.884040323285523,
+    "total_poses": 316.0,
+    "avg_centerline_p90_mm": Infinity,
+    "avg_tangent_p90_deg": Infinity,
+    "avg_corridor_inlier_ratio": 0.0,
+    "corridor_pass": false
+  },
+  "recommended_variant": "corrected",
+  "alternative_policy": {
+    "U1_right": "constrained_k5",
+    "U2_left": "no_snap",
+    "S3_complex_bottom": "constrained_k5",
+    "S4_right_step": "constrained_k5",
+    "S5_long_bottom_steps": "constrained_k5"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "communication_component_root": "C:\\Mech-Mind\\Mech-Vision & Mech-Viz-2.1.2\\Communication Component",
+  "project_dir": "C:\\Users\\hanmech\\Desktop\\DTS_image\\Mech-Viz-dCNwPT",
+  "service_name": "DTS Weld Seam Outer Move",
+  "motion_type": "L",
+  "velocity": 0.15,
+  "acceleration": 0.15,
+  "blend_radius": 0.01
+}

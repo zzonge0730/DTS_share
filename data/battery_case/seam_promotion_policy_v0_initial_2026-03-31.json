@@ -1,0 +1,13 @@
+{
+  "version": "seam_promotion/v0_initial_2026-03-31",
+  "mode": "manual_review_with_recorded_evidence",
+  "required_captures": [
+    "763",
+    "978"
+  ],
+  "target_requirements": {
+    "corridor_pass_all": true,
+    "worst_endpoint_lt_mm": 2.5,
+    "worst_contiguous_outlier_points_lte": 3
+  }
+}

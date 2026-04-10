@@ -1,0 +1,12 @@
+Program File Format Version : 1.6  MechType: 739(HH4-01)  TotalAxis: 6  AuxAxis: 0
+     '9821_MMH_OPEN("192.168.1.10", 8000, 1)
+     'ETHERNET, IP, PORT, CH
+     'UDP CONNECT
+     ENET1.IP=V500$
+     ENET1.RPORT=V500%
+     ENET1.LPORT=V500%
+     '_
+     DELAY 0.5
+     ENET1.OPEN 1
+     CLR_RBUF ENET1
+     END

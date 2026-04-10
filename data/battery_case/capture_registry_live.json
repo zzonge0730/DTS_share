@@ -1,0 +1,456 @@
+{
+  "battery_case_live_registry_version": "2026-03-19",
+  "reference_pcd": "/mnt/c/Users/hanmech/Desktop/DTS_image/pipeline/ref_battery_case.ply",
+  "captures": {
+    "547": {
+      "raw_capture_ply": "/mnt/c/Users/hanmech/Desktop/DTS_image/captures/point_cloud_20260317_133253_547.ply",
+      "roi_or_eval_pcd": null,
+      "icp_transform_npy": "/home/hanmech/DTS/data/battery_case/live_icp/547/icp_transform_547.npy",
+      "canonical_nn_evaluation_cloud": "raw_capture_ply",
+      "icp_report_json": "/home/hanmech/DTS/data/battery_case/live_icp/547/icp_report_547.json",
+      "notes": [
+        "Live capture auto-registered on 2026-03-19T13:37:13",
+        "Auto ICP seed selected from baseline capture 978",
+        "ICP fitness=0.9604, rmse=2.006mm",
+        "Raw capture PLY is the canonical NN evaluation cloud unless a verified eval cloud is later added"
+      ],
+      "_source": "live_capture_registry"
+    },
+    "20260320_132652_gui": {
+      "raw_capture_ply": "/mnt/c/Users/hanmech/Desktop/DTS_image/captures/point_cloud_20260320_132652_gui.ply",
+      "roi_or_eval_pcd": null,
+      "icp_transform_npy": "/home/hanmech/DTS/data/battery_case/live_icp/20260320_132652_gui/icp_transform_20260320_132652_gui.npy",
+      "canonical_nn_evaluation_cloud": "raw_capture_ply",
+      "icp_report_json": "/home/hanmech/DTS/data/battery_case/live_icp/20260320_132652_gui/icp_report_20260320_132652_gui.json",
+      "notes": [
+        "Live capture auto-registered on 2026-03-20T13:27:47",
+        "Auto ICP seed selected from baseline capture 741",
+        "ICP fitness=0.9509, rmse=2.039mm",
+        "Raw capture PLY is the canonical NN evaluation cloud unless a verified eval cloud is later added"
+      ],
+      "_source": "live_capture_registry"
+    },
+    "20260320_134853_gui": {
+      "raw_capture_ply": "/mnt/c/Users/hanmech/Desktop/DTS_image/captures/point_cloud_20260320_134853_gui.ply",
+      "roi_or_eval_pcd": null,
+      "icp_transform_npy": "/home/hanmech/DTS/data/battery_case/live_icp/20260320_134853_gui/icp_transform_20260320_134853_gui.npy",
+      "canonical_nn_evaluation_cloud": "raw_capture_ply",
+      "icp_report_json": "/home/hanmech/DTS/data/battery_case/live_icp/20260320_134853_gui/icp_report_20260320_134853_gui.json",
+      "notes": [
+        "Live capture auto-registered on 2026-03-20T13:49:31",
+        "Auto ICP seed selected from baseline capture 741",
+        "ICP fitness=0.9499, rmse=2.052mm",
+        "Raw capture PLY is the canonical NN evaluation cloud unless a verified eval cloud is later added"
+      ],
+      "_source": "live_capture_registry"
+    },
+    "343": {
+      "raw_capture_ply": "/mnt/c/Users/hanmech/Desktop/DTS_image/captures/point_cloud_20260402_145032_343.ply",
+      "roi_or_eval_pcd": null,
+      "icp_transform_npy": "/home/hanmech/DTS/data/battery_case/live_icp/343/icp_transform_343.npy",
+      "canonical_nn_evaluation_cloud": "raw_capture_ply",
+      "icp_report_json": "/home/hanmech/DTS/data/battery_case/live_icp/343/icp_report_343.json",
+      "notes": [
+        "Live capture auto-registered on 2026-04-02T14:57:49",
+        "Auto ICP seed selected from baseline capture 978",
+        "ICP fitness=0.5709, rmse=0.957mm",
+        "Raw capture PLY is the canonical NN evaluation cloud unless a verified eval cloud is later added",
+        "Seam-local NN summary: mean=0.705mm, worst max=2.824mm",
+        "Seam corridor summary: centerline p90=1.793mm, tangent p90=5.78deg, inlier=90.48%",
+        "Seed pruning: kept 2/4 seeds after stage 1"
+      ],
+      "_source": "live_capture_registry"
+    },
+    "806": {
+      "raw_capture_ply": "/mnt/c/Users/hanmech/Desktop/DTS_image/captures/point_cloud_20260402_145315_806.ply",
+      "roi_or_eval_pcd": null,
+      "icp_transform_npy": "/home/hanmech/DTS/data/battery_case/live_icp/806/icp_transform_806.npy",
+      "canonical_nn_evaluation_cloud": "raw_capture_ply",
+      "icp_report_json": "/home/hanmech/DTS/data/battery_case/live_icp/806/icp_report_806.json",
+      "notes": [
+        "Live capture auto-registered on 2026-04-02T14:58:33",
+        "Auto ICP seed selected from baseline capture 741",
+        "ICP fitness=0.9153, rmse=1.594mm",
+        "Raw capture PLY is the canonical NN evaluation cloud unless a verified eval cloud is later added",
+        "Seam-local NN summary: mean=1.566mm, worst max=3.532mm",
+        "Seam corridor summary: centerline p90=1.793mm, tangent p90=5.78deg, inlier=90.48%",
+        "Seed pruning: kept 2/4 seeds after stage 1"
+      ],
+      "_source": "live_capture_registry"
+    },
+    "643": {
+      "raw_capture_ply": "/mnt/c/Users/hanmech/Desktop/DTS_image/captures/point_cloud_20260402_145349_643.ply",
+      "roi_or_eval_pcd": null,
+      "icp_transform_npy": "/home/hanmech/DTS/data/battery_case/live_icp/643/icp_transform_643.npy",
+      "canonical_nn_evaluation_cloud": "raw_capture_ply",
+      "icp_report_json": "/home/hanmech/DTS/data/battery_case/live_icp/643/icp_report_643.json",
+      "notes": [
+        "Live capture auto-registered on 2026-04-02T14:59:10",
+        "Auto ICP seed selected from baseline capture 741",
+        "ICP fitness=0.5714, rmse=0.957mm",
+        "Raw capture PLY is the canonical NN evaluation cloud unless a verified eval cloud is later added",
+        "Seam-local NN summary: mean=0.641mm, worst max=2.184mm",
+        "Seam corridor summary: centerline p90=1.793mm, tangent p90=5.78deg, inlier=90.48%",
+        "Seed pruning: kept 2/4 seeds after stage 1"
+      ],
+      "_source": "live_capture_registry"
+    },
+    "602": {
+      "raw_capture_ply": "/mnt/c/Users/hanmech/Desktop/DTS_image/captures/point_cloud_20260402_145444_602.ply",
+      "roi_or_eval_pcd": null,
+      "icp_transform_npy": "/home/hanmech/DTS/data/battery_case/live_icp/602/icp_transform_602.npy",
+      "canonical_nn_evaluation_cloud": "raw_capture_ply",
+      "icp_report_json": "/home/hanmech/DTS/data/battery_case/live_icp/602/icp_report_602.json",
+      "notes": [
+        "Live capture auto-registered on 2026-04-02T14:59:37",
+        "Auto ICP seed selected from baseline capture 741",
+        "ICP fitness=0.5698, rmse=0.964mm",
+        "Raw capture PLY is the canonical NN evaluation cloud unless a verified eval cloud is later added",
+        "Seam-local NN summary: mean=0.977mm, worst max=2.986mm",
+        "Seam corridor summary: centerline p90=1.793mm, tangent p90=5.78deg, inlier=90.48%",
+        "Seed pruning: kept 2/4 seeds after stage 1"
+      ],
+      "_source": "live_capture_registry"
+    },
+    "583": {
+      "raw_capture_ply": "/mnt/c/Users/hanmech/Desktop/DTS_image/captures/point_cloud_20260402_153749_583.ply",
+      "roi_or_eval_pcd": null,
+      "icp_transform_npy": "/home/hanmech/DTS/data/battery_case/live_icp/583/icp_transform_583.npy",
+      "canonical_nn_evaluation_cloud": "raw_capture_ply",
+      "icp_report_json": "/home/hanmech/DTS/data/battery_case/live_icp/583/icp_report_583.json",
+      "notes": [
+        "Live capture auto-registered on 2026-04-02T15:40:21",
+        "Auto ICP seed selected from baseline capture 763",
+        "ICP fitness=0.5630, rmse=0.963mm",
+        "Raw capture PLY is the canonical NN evaluation cloud unless a verified eval cloud is later added",
+        "Seam-local NN summary: mean=0.765mm, worst max=3.854mm",
+        "Seam corridor summary: centerline p90=1.793mm, tangent p90=5.78deg, inlier=90.48%",
+        "Seed pruning: kept 2/4 seeds after stage 1"
+      ],
+      "_source": "live_capture_registry"
+    },
+    "361": {
+      "raw_capture_ply": "/mnt/c/Users/hanmech/Desktop/DTS_image/captures/point_cloud_20260402_153804_361.ply",
+      "roi_or_eval_pcd": null,
+      "icp_transform_npy": "/home/hanmech/DTS/data/battery_case/live_icp/361/icp_transform_361.npy",
+      "canonical_nn_evaluation_cloud": "raw_capture_ply",
+      "icp_report_json": "/home/hanmech/DTS/data/battery_case/live_icp/361/icp_report_361.json",
+      "notes": [
+        "Live capture auto-registered on 2026-04-02T15:40:52",
+        "Auto ICP seed selected from baseline capture 763",
+        "ICP fitness=0.8652, rmse=1.567mm",
+        "Raw capture PLY is the canonical NN evaluation cloud unless a verified eval cloud is later added",
+        "Seam-local NN summary: mean=1.443mm, worst max=4.841mm",
+        "Seam corridor summary: centerline p90=1.793mm, tangent p90=5.78deg, inlier=90.48%",
+        "Seed pruning: kept 2/4 seeds after stage 1"
+      ],
+      "_source": "live_capture_registry"
+    },
+    "144": {
+      "raw_capture_ply": "/mnt/c/Users/hanmech/Desktop/DTS_image/captures/point_cloud_20260402_153852_144.ply",
+      "roi_or_eval_pcd": null,
+      "icp_transform_npy": "/home/hanmech/DTS/data/battery_case/live_icp/144/icp_transform_144.npy",
+      "canonical_nn_evaluation_cloud": "raw_capture_ply",
+      "icp_report_json": "/home/hanmech/DTS/data/battery_case/live_icp/144/icp_report_144.json",
+      "notes": [
+        "Live capture auto-registered on 2026-04-02T15:47:48",
+        "Auto ICP seed selected from baseline capture 763",
+        "ICP fitness=0.5618, rmse=0.959mm",
+        "Raw capture PLY is the canonical NN evaluation cloud unless a verified eval cloud is later added",
+        "Seam-local NN summary: mean=0.725mm, worst max=2.952mm",
+        "Seam corridor summary: centerline p90=1.793mm, tangent p90=5.78deg, inlier=90.48%",
+        "Seed pruning: kept 2/4 seeds after stage 1"
+      ],
+      "_source": "live_capture_registry"
+    },
+    "703": {
+      "raw_capture_ply": "/mnt/c/Users/hanmech/Desktop/DTS_image/captures/point_cloud_20260402_153907_703.ply",
+      "roi_or_eval_pcd": null,
+      "icp_transform_npy": "/home/hanmech/DTS/data/battery_case/live_icp/703/icp_transform_703.npy",
+      "canonical_nn_evaluation_cloud": "raw_capture_ply",
+      "icp_report_json": "/home/hanmech/DTS/data/battery_case/live_icp/703/icp_report_703.json",
+      "notes": [
+        "Live capture auto-registered on 2026-04-02T15:41:51",
+        "Auto ICP seed selected from baseline capture 763",
+        "ICP fitness=0.8608, rmse=1.574mm",
+        "Raw capture PLY is the canonical NN evaluation cloud unless a verified eval cloud is later added",
+        "Seam-local NN summary: mean=1.553mm, worst max=5.698mm",
+        "Seam corridor summary: centerline p90=1.793mm, tangent p90=5.78deg, inlier=90.48%",
+        "Seed pruning: kept 2/4 seeds after stage 1"
+      ],
+      "_source": "live_capture_registry"
+    },
+    "747": {
+      "raw_capture_ply": "/mnt/c/Users/hanmech/Desktop/DTS_image/captures/point_cloud_20260402_154415_747.ply",
+      "roi_or_eval_pcd": null,
+      "icp_transform_npy": "/home/hanmech/DTS/data/battery_case/live_icp/747/icp_transform_747.npy",
+      "canonical_nn_evaluation_cloud": "raw_capture_ply",
+      "icp_report_json": "/home/hanmech/DTS/data/battery_case/live_icp/747/icp_report_747.json",
+      "notes": [
+        "Live capture auto-registered on 2026-04-02T15:50:06",
+        "Auto ICP seed selected from baseline capture 978",
+        "ICP fitness=0.0000, rmse=0.000mm",
+        "Raw capture PLY is the canonical NN evaluation cloud unless a verified eval cloud is later added",
+        "Seam-local NN summary: mean=343.237mm, worst max=380.028mm",
+        "Seam corridor summary: centerline p90=1.793mm, tangent p90=5.78deg, inlier=90.48%",
+        "Seed pruning: kept 2/4 seeds after stage 1"
+      ],
+      "_source": "live_capture_registry"
+    },
+    "146": {
+      "raw_capture_ply": "/mnt/c/Users/hanmech/Desktop/DTS_image/captures/point_cloud_20260402_154547_146.ply",
+      "roi_or_eval_pcd": null,
+      "icp_transform_npy": "/home/hanmech/DTS/data/battery_case/live_icp/146/icp_transform_146.npy",
+      "canonical_nn_evaluation_cloud": "raw_capture_ply",
+      "icp_report_json": "/home/hanmech/DTS/data/battery_case/live_icp/146/icp_report_146.json",
+      "notes": [
+        "Live capture auto-registered on 2026-04-02T15:50:14",
+        "Auto ICP seed selected from baseline capture 978",
+        "ICP fitness=0.0000, rmse=0.000mm",
+        "Raw capture PLY is the canonical NN evaluation cloud unless a verified eval cloud is later added",
+        "Seam-local NN summary: mean=343.341mm, worst max=379.996mm",
+        "Seam corridor summary: centerline p90=1.793mm, tangent p90=5.78deg, inlier=90.48%",
+        "Seed pruning: kept 2/4 seeds after stage 1"
+      ],
+      "_source": "live_capture_registry"
+    },
+    "754": {
+      "raw_capture_ply": "/mnt/c/Users/hanmech/Desktop/DTS_image/captures/point_cloud_20260402_154554_754.ply",
+      "roi_or_eval_pcd": null,
+      "icp_transform_npy": "/home/hanmech/DTS/data/battery_case/live_icp/754/icp_transform_754.npy",
+      "canonical_nn_evaluation_cloud": "raw_capture_ply",
+      "icp_report_json": "/home/hanmech/DTS/data/battery_case/live_icp/754/icp_report_754.json",
+      "notes": [
+        "Live capture auto-registered on 2026-04-02T15:50:23",
+        "Auto ICP seed selected from baseline capture 978",
+        "ICP fitness=0.0000, rmse=0.000mm",
+        "Raw capture PLY is the canonical NN evaluation cloud unless a verified eval cloud is later added",
+        "Seam-local NN summary: mean=343.406mm, worst max=380.039mm",
+        "Seam corridor summary: centerline p90=1.793mm, tangent p90=5.78deg, inlier=90.48%",
+        "Seed pruning: kept 2/4 seeds after stage 1"
+      ],
+      "_source": "live_capture_registry"
+    },
+    "000": {
+      "raw_capture_ply": "/mnt/c/Users/hanmech/Desktop/DTS_image/captures/point_cloud_20260402_154406_000.ply",
+      "roi_or_eval_pcd": null,
+      "icp_transform_npy": "/home/hanmech/DTS/data/battery_case/live_icp/000/icp_transform_000.npy",
+      "canonical_nn_evaluation_cloud": "raw_capture_ply",
+      "icp_report_json": "/home/hanmech/DTS/data/battery_case/live_icp/000/icp_report_000.json",
+      "notes": [
+        "Live capture auto-registered on 2026-04-02T15:50:38",
+        "Auto ICP seed selected from baseline capture 978",
+        "ICP fitness=0.0000, rmse=0.000mm",
+        "Raw capture PLY is the canonical NN evaluation cloud unless a verified eval cloud is later added",
+        "Seam-local NN summary: mean=343.337mm, worst max=380.067mm",
+        "Seam corridor summary: centerline p90=1.793mm, tangent p90=5.78deg, inlier=90.48%",
+        "Seed pruning: kept 2/4 seeds after stage 1"
+      ],
+      "_source": "live_capture_registry"
+    },
+    "468": {
+      "raw_capture_ply": "/mnt/c/Users/hanmech/Desktop/DTS_image/captures/point_cloud_20260402_155514_468.ply",
+      "roi_or_eval_pcd": null,
+      "icp_transform_npy": "/home/hanmech/DTS/data/battery_case/live_icp/468/icp_transform_468.npy",
+      "canonical_nn_evaluation_cloud": "raw_capture_ply",
+      "icp_report_json": "/home/hanmech/DTS/data/battery_case/live_icp/468/icp_report_468.json",
+      "notes": [
+        "Live capture auto-registered on 2026-04-02T15:56:21",
+        "Auto ICP seed selected from baseline capture 978",
+        "ICP fitness=0.0000, rmse=0.000mm",
+        "Raw capture PLY is the canonical NN evaluation cloud unless a verified eval cloud is later added",
+        "Seam-local NN summary: mean=343.453mm, worst max=380.153mm",
+        "Seam corridor summary: centerline p90=1.793mm, tangent p90=5.78deg, inlier=90.48%",
+        "Seed pruning: kept 2/4 seeds after stage 1"
+      ],
+      "_source": "live_capture_registry"
+    },
+    "644": {
+      "raw_capture_ply": "/mnt/c/Users/hanmech/Desktop/DTS_image/captures/point_cloud_20260402_155317_644.ply",
+      "roi_or_eval_pcd": null,
+      "icp_transform_npy": "/home/hanmech/DTS/data/battery_case/live_icp/644/icp_transform_644.npy",
+      "canonical_nn_evaluation_cloud": "raw_capture_ply",
+      "icp_report_json": "/home/hanmech/DTS/data/battery_case/live_icp/644/icp_report_644.json",
+      "notes": [
+        "Live capture auto-registered on 2026-04-02T15:56:30",
+        "Auto ICP seed selected from baseline capture 978",
+        "ICP fitness=0.0000, rmse=0.000mm",
+        "Raw capture PLY is the canonical NN evaluation cloud unless a verified eval cloud is later added",
+        "Seam-local NN summary: mean=343.353mm, worst max=379.994mm",
+        "Seam corridor summary: centerline p90=1.793mm, tangent p90=5.78deg, inlier=90.48%",
+        "Seed pruning: kept 2/4 seeds after stage 1"
+      ],
+      "_source": "live_capture_registry"
+    },
+    "211": {
+      "raw_capture_ply": "/mnt/c/Users/hanmech/Desktop/DTS_image/captures/point_cloud_20260402_160204_211.ply",
+      "roi_or_eval_pcd": null,
+      "icp_transform_npy": "/home/hanmech/DTS/data/battery_case/live_icp/211/icp_transform_211.npy",
+      "canonical_nn_evaluation_cloud": "raw_capture_ply",
+      "icp_report_json": "/home/hanmech/DTS/data/battery_case/live_icp/211/icp_report_211.json",
+      "notes": [
+        "Live capture auto-registered on 2026-04-02T16:02:42",
+        "Auto ICP seed selected from baseline capture 978",
+        "ICP fitness=0.0000, rmse=0.000mm",
+        "Raw capture PLY is the canonical NN evaluation cloud unless a verified eval cloud is later added",
+        "Seam-local NN summary: mean=333.007mm, worst max=349.410mm",
+        "Seam corridor summary: centerline p90=1.793mm, tangent p90=5.78deg, inlier=90.48%",
+        "Seed pruning: kept 2/4 seeds after stage 1"
+      ],
+      "_source": "live_capture_registry"
+    },
+    "codex": {
+      "raw_capture_ply": "/mnt/c/Users/hanmech/Desktop/DTS_image/captures/point_cloud_20260403_153216_codex.ply",
+      "roi_or_eval_pcd": null,
+      "icp_transform_npy": "/home/hanmech/DTS/data/battery_case/live_icp/codex/icp_transform_codex.npy",
+      "canonical_nn_evaluation_cloud": "raw_capture_ply",
+      "icp_report_json": "/home/hanmech/DTS/data/battery_case/live_icp/codex/icp_report_codex.json",
+      "notes": [
+        "Live capture auto-registered on 2026-04-03T15:33:34",
+        "Auto ICP seed selected from baseline capture 978",
+        "ICP fitness=0.8936, rmse=1.577mm",
+        "Raw capture PLY is the canonical NN evaluation cloud unless a verified eval cloud is later added",
+        "Seam-local NN summary: mean=2.777mm, worst max=8.386mm",
+        "Seam corridor summary: centerline p90=1.793mm, tangent p90=5.78deg, inlier=90.48%",
+        "Seed pruning: kept 2/4 seeds after stage 1"
+      ],
+      "_source": "live_capture_registry"
+    },
+    "R01": {
+      "raw_capture_ply": "/mnt/c/Users/hanmech/Desktop/DTS_image/captures/point_cloud_20260403_154913_R01.ply",
+      "roi_or_eval_pcd": null,
+      "icp_transform_npy": "/home/hanmech/DTS/data/battery_case/live_icp/R01/icp_transform_R01.npy",
+      "canonical_nn_evaluation_cloud": "raw_capture_ply",
+      "icp_report_json": "/home/hanmech/DTS/data/battery_case/live_icp/R01/icp_report_R01.json",
+      "notes": [
+        "Live capture auto-registered on 2026-04-03T15:51:25",
+        "Auto ICP seed selected from baseline capture 741",
+        "ICP fitness=0.5620, rmse=0.953mm",
+        "Raw capture PLY is the canonical NN evaluation cloud unless a verified eval cloud is later added",
+        "Seam-local NN summary: mean=0.458mm, worst max=1.177mm",
+        "Seam corridor summary: centerline p90=1.793mm, tangent p90=5.78deg, inlier=90.48%",
+        "Seed pruning: kept 2/4 seeds after stage 1"
+      ],
+      "_source": "live_capture_registry"
+    },
+    "R02": {
+      "raw_capture_ply": "/mnt/c/Users/hanmech/Desktop/DTS_image/captures/point_cloud_20260403_154926_R02.ply",
+      "roi_or_eval_pcd": null,
+      "icp_transform_npy": "/home/hanmech/DTS/data/battery_case/live_icp/R02/icp_transform_R02.npy",
+      "canonical_nn_evaluation_cloud": "raw_capture_ply",
+      "icp_report_json": "/home/hanmech/DTS/data/battery_case/live_icp/R02/icp_report_R02.json",
+      "notes": [
+        "Live capture auto-registered on 2026-04-03T15:52:15",
+        "Auto ICP seed selected from baseline capture 978",
+        "ICP fitness=0.5625, rmse=0.956mm",
+        "Raw capture PLY is the canonical NN evaluation cloud unless a verified eval cloud is later added",
+        "Seam-local NN summary: mean=0.476mm, worst max=1.230mm",
+        "Seam corridor summary: centerline p90=1.793mm, tangent p90=5.78deg, inlier=90.48%",
+        "Seed pruning: kept 2/4 seeds after stage 1"
+      ],
+      "_source": "live_capture_registry"
+    },
+    "R03": {
+      "raw_capture_ply": "/mnt/c/Users/hanmech/Desktop/DTS_image/captures/point_cloud_20260403_154941_R03.ply",
+      "roi_or_eval_pcd": null,
+      "icp_transform_npy": "/home/hanmech/DTS/data/battery_case/live_icp/R03/icp_transform_R03.npy",
+      "canonical_nn_evaluation_cloud": "raw_capture_ply",
+      "icp_report_json": "/home/hanmech/DTS/data/battery_case/live_icp/R03/icp_report_R03.json",
+      "notes": [
+        "Live capture auto-registered on 2026-04-03T15:52:59",
+        "Auto ICP seed selected from baseline capture 741",
+        "ICP fitness=0.5623, rmse=0.955mm",
+        "Raw capture PLY is the canonical NN evaluation cloud unless a verified eval cloud is later added",
+        "Seam-local NN summary: mean=0.448mm, worst max=1.251mm",
+        "Seam corridor summary: centerline p90=1.793mm, tangent p90=5.78deg, inlier=90.48%",
+        "Seed pruning: kept 2/4 seeds after stage 1"
+      ],
+      "_source": "live_capture_registry"
+    },
+    "R04": {
+      "raw_capture_ply": "/mnt/c/Users/hanmech/Desktop/DTS_image/captures/point_cloud_20260403_154953_R04.ply",
+      "roi_or_eval_pcd": null,
+      "icp_transform_npy": "/home/hanmech/DTS/data/battery_case/live_icp/R04/icp_transform_R04.npy",
+      "canonical_nn_evaluation_cloud": "raw_capture_ply",
+      "icp_report_json": "/home/hanmech/DTS/data/battery_case/live_icp/R04/icp_report_R04.json",
+      "notes": [
+        "Live capture auto-registered on 2026-04-03T15:53:39",
+        "Auto ICP seed selected from baseline capture 741",
+        "ICP fitness=0.5619, rmse=0.955mm",
+        "Raw capture PLY is the canonical NN evaluation cloud unless a verified eval cloud is later added",
+        "Seam-local NN summary: mean=0.462mm, worst max=1.311mm",
+        "Seam corridor summary: centerline p90=1.793mm, tangent p90=5.78deg, inlier=90.48%",
+        "Seed pruning: kept 2/4 seeds after stage 1"
+      ],
+      "_source": "live_capture_registry"
+    },
+    "R05": {
+      "raw_capture_ply": "/mnt/c/Users/hanmech/Desktop/DTS_image/captures/point_cloud_20260403_155007_R05.ply",
+      "roi_or_eval_pcd": null,
+      "icp_transform_npy": "/home/hanmech/DTS/data/battery_case/live_icp/R05/icp_transform_R05.npy",
+      "canonical_nn_evaluation_cloud": "raw_capture_ply",
+      "icp_report_json": "/home/hanmech/DTS/data/battery_case/live_icp/R05/icp_report_R05.json",
+      "notes": [
+        "Live capture auto-registered on 2026-04-03T15:55:20",
+        "Auto ICP seed selected from baseline capture 741",
+        "ICP fitness=0.5625, rmse=0.954mm",
+        "Raw capture PLY is the canonical NN evaluation cloud unless a verified eval cloud is later added",
+        "Seam-local NN summary: mean=0.465mm, worst max=1.490mm",
+        "Seam corridor summary: centerline p90=1.793mm, tangent p90=5.78deg, inlier=90.48%",
+        "Seed pruning: kept 2/4 seeds after stage 1"
+      ],
+      "_source": "live_capture_registry"
+    },
+    "CMP763": {
+      "raw_capture_ply": "/mnt/c/Users/hanmech/Desktop/DTS_image/captures/20260316_763/point_cloud_20260316_142616_763.ply",
+      "roi_or_eval_pcd": null,
+      "icp_transform_npy": "/home/hanmech/DTS/data/battery_case/live_icp/CMP763/icp_transform_CMP763.npy",
+      "canonical_nn_evaluation_cloud": "raw_capture_ply",
+      "icp_report_json": "/home/hanmech/DTS/data/battery_case/live_icp/CMP763/icp_report_CMP763.json",
+      "notes": [
+        "Live capture auto-registered on 2026-04-03T16:31:03",
+        "Auto ICP seed selected from baseline capture 763",
+        "ICP fitness=0.5594, rmse=0.959mm",
+        "Raw capture PLY is the canonical NN evaluation cloud unless a verified eval cloud is later added",
+        "Seam-local NN summary: mean=0.632mm, worst max=2.227mm",
+        "Seam corridor summary: centerline p90=1.793mm, tangent p90=5.78deg, inlier=90.48%",
+        "Seed pruning: kept 2/4 seeds after stage 1"
+      ],
+      "_source": "live_capture_registry"
+    },
+    "007": {
+      "raw_capture_ply": "/mnt/c/Users/hanmech/Desktop/DTS_image/captures/reg/point_cloud_20260406_133136_007.ply",
+      "roi_or_eval_pcd": null,
+      "icp_transform_npy": "/home/hanmech/DTS/data/battery_case/live_icp/007/icp_transform_007.npy",
+      "canonical_nn_evaluation_cloud": "raw_capture_ply",
+      "icp_report_json": "/home/hanmech/DTS/data/battery_case/live_icp/007/icp_report_007.json",
+      "notes": [
+        "Live capture auto-registered on 2026-04-06T14:32:45",
+        "Auto ICP seed selected from baseline capture 741",
+        "ICP fitness=0.5544, rmse=0.955mm",
+        "Raw capture PLY is the canonical NN evaluation cloud unless a verified eval cloud is later added",
+        "Seam-local NN summary: mean=0.473mm, worst max=1.584mm",
+        "Seam corridor summary: centerline p90=1.793mm, tangent p90=5.78deg, inlier=90.48%",
+        "Seed pruning: kept 2/4 seeds after stage 1"
+      ],
+      "_source": "live_capture_registry"
+    },
+    "rehearsal_978": {
+      "raw_capture_ply": "/mnt/c/Users/hanmech/Desktop/DTS_image/captures/point_cloud_20260317_134008_978.ply",
+      "roi_or_eval_pcd": null,
+      "icp_transform_npy": "data/battery_case/live_icp/rehearsal_978/icp_transform_rehearsal_978.npy",
+      "canonical_nn_evaluation_cloud": "raw_capture_ply",
+      "icp_report_json": "data/battery_case/live_icp/rehearsal_978/icp_report_rehearsal_978.json",
+      "notes": [
+        "Live capture auto-registered on 2026-04-08T14:37:17",
+        "Auto ICP seed selected from baseline capture 741",
+        "ICP fitness=0.5703, rmse=0.955mm",
+        "Raw capture PLY is the canonical NN evaluation cloud unless a verified eval cloud is later added",
+        "Seam-local NN summary: mean=0.593mm, worst max=2.543mm",
+        "Seam corridor summary: centerline p90=1.793mm, tangent p90=5.78deg, inlier=90.48%",
+        "Seed pruning: kept 2/4 seeds after stage 1"
+      ],
+      "_source": "live_capture_registry"
+    }
+  }
+}

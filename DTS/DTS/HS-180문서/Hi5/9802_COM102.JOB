@@ -1,0 +1,44 @@
+Program File Format Version : 1.6  MechType: 739(HH4-01)  TotalAxis: 6  AuxAxis: 0
+     '9802_MMH_VISresult(1,2)
+     '102, GET VISION RESULT,
+     LV1$="102"
+     V501$=LV1$+","+STR$(V503%)
+     *SEND102
+     CALL 9823_MMH_SEND
+     'ANSWER
+     CALL 9824_MMH_RECV
+     IF (V503$ <> "102") THEN
+     PRINT #0,"ERROR : 102 CMD ERROR"
+     STOP
+     ENDIF
+     IF (V504$="1100") AND (V505$<>"0") THEN
+     IF V505% = 2 THEN
+     FOR LV1%=1 TO VAL(V506$)
+     LV2%=LV1%-1
+     V![500+LV2%*14]=VAL(V$[508+LV2%*8])
+     V![501+LV2%*14]=VAL(V$[509+LV2%*8])
+     V![502+LV2%*14]=VAL(V$[510+LV2%*8])
+     V![503+LV2%*14]=VAL(V$[511+LV2%*8])
+     V![504+LV2%*14]=VAL(V$[512+LV2%*8])
+     V![505+LV2%*14]=VAL(V$[513+LV2%*8])
+     V![506+LV2%*14]=VAL(V$[514+LV2%*8])
+     V![507+LV2%*14]=VAL(V$[515+LV2%*8])
+     NEXT
+     ELSE
+     FOR LV1%=1 TO VAL(V506$)
+     LV2%=LV1%-1
+     V![508+LV2%*14]=VAL(V$[508+LV2%*8])
+     V![509+LV2%*14]=VAL(V$[509+LV2%*8])
+     V![510+LV2%*14]=VAL(V$[510+LV2%*8])
+     V![511+LV2%*14]=VAL(V$[511+LV2%*8])
+     V![512+LV2%*14]=VAL(V$[512+LV2%*8])
+     V![513+LV2%*14]=VAL(V$[513+LV2%*8])
+     V![506+LV2%*14]=VAL(V$[514+LV2%*8])
+     V![507+LV2%*14]=VAL(V$[515+LV2%*8])
+     NEXT
+     ENDIF
+     'ELSE
+     'PRINT #0,"ERROR : 102 IPC ERROR"
+     'STOP
+     ENDIF
+     END

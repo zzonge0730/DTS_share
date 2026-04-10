@@ -1,0 +1,65 @@
+Program File Format Version : 1.6  MechType: 739(HH4-01)  TotalAxis: 6  AuxAxis: 0
+     REM VIS sample
+     '_
+     V500$="192.168.1.10"
+     V500%=8000
+     V501%=1
+     CALL 9821_MMH_OPEN
+     PRINT #0,"UDP OPEN OK !"
+     DELAY 1.0
+     '_
+     V503%=1
+     V504%=1
+     V505%=2
+     V506%=1
+     V507%=10
+     P500=P*
+     '_
+     CALL 9803_MMH_ChangVIS
+     IF (V504$ <> "1107") THEN
+     REM ERROR OCCURED
+     STOP
+     ENDIF
+     '_
+     CALL 9801_MMH_VIStrig
+     IF (V504$ <> "1102") THEN
+     REM ERROR OCCURED
+     STOP
+     ENDIF
+     '_
+     CALL 9802_MMH_VISresult
+     IF (V504$ <> "1100") THEN
+     REM ERROR OCCURED
+     STOP
+     ENDIF
+     '_
+     CALL 9822_MMH_CLOSE
+     '_
+     IF V505% = 2 THEN
+     FOR LV1%=1 TO VAL(V506$)
+     LV3%=LV1%-1
+     LV2%=V507%+LV3%
+     P[LV2%]=(0,0,0,0,0,0,&H0001)R
+     P[LV2%].X=V![500+LV3%*14]
+     P[LV2%].Y=V![501+LV3%*14]
+     P[LV2%].Z=V![502+LV3%*14]
+     P[LV2%].RX=V![503+LV3%*14]
+     P[LV2%].RY=V![504+LV3%*14]
+     P[LV2%].RZ=V![505+LV3%*14]
+     NEXT
+     '_
+     ELSE
+     FOR LV1%=1 TO VAL(V506$)
+     LV2%=V507%+LV1%-1
+     P[LV2%]=(0,0,0,0,0,0)A
+     P[LV2%].J1=V![508+LV3%*14]
+     P[LV2%].J2=V![509+LV3%*14]
+     P[LV2%].J3=V![510+LV3%*14]
+     P[LV2%].J4=V![511+LV3%*14]
+     P[LV2%].J5=V![512+LV3%*14]
+     P[LV2%].J6=V![513+LV3%*14]
+     NEXT
+     ENDIF
+     '_
+     '_
+     END

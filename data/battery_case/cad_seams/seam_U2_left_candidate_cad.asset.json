@@ -1,0 +1,137 @@
+{
+  "schema_version": "seam_asset/v1",
+  "seam_name": "U2_left",
+  "status": "candidate",
+  "variant": "cad_edge_chain",
+  "geometry": {
+    "csv_path": "data/battery_case/cad_seams/seam_U2_left.csv",
+    "units": "mm",
+    "point_count": 109,
+    "start_xyz_mm": [
+      1088.5754,
+      408.0,
+      -194.5573
+    ],
+    "end_xyz_mm": [
+      1241.9766,
+      408.0,
+      -194.5573
+    ],
+    "bbox_min_xyz_mm": [
+      1088.5754,
+      408.0,
+      -194.5573
+    ],
+    "bbox_max_xyz_mm": [
+      1241.9766,
+      437.3767,
+      -194.5573
+    ],
+    "bbox_size_xyz_mm": [
+      153.40120000000002,
+      29.376700000000028,
+      0.0
+    ],
+    "polyline_length_mm": 202.8572966238858,
+    "avg_step_mm": 1.8783083020730165,
+    "max_step_mm": 2.0,
+    "start_end_distance_mm": 153.40120000000002
+  },
+  "source": {
+    "kind": "cad_edge_chain",
+    "model_name": "P7375_P1000_EOP7S051_D_",
+    "model_format": "STEP",
+    "model_path": null,
+    "selection": {
+      "edge_chain": [
+        "Edge1047",
+        "Edge1051",
+        "Edge1052",
+        "Edge1069",
+        "Edge1113"
+      ]
+    }
+  },
+  "runtime_contract": {
+    "snap_strategy": "ref_pcd_surface_snap_k5",
+    "orientation_source": "runtime_from_ref_pcd_normals"
+  },
+  "validation": {
+    "captures_tested": [
+      "763",
+      "978"
+    ],
+    "metric_summary": {
+      "avg_mean_nn_mm": 0.98,
+      "avg_p90_nn_mm": 2.0,
+      "worst_max_nn_mm": 3.952,
+      "avg_centerline_p90_mm": 1.551,
+      "avg_tangent_p90_deg": 12.62,
+      "avg_corridor_inlier_ratio": 0.913,
+      "avg_endpoint_start_mm": 1.361,
+      "avg_endpoint_end_mm": 2.203,
+      "worst_contiguous_outlier_points": 3.0,
+      "corridor_pass": false
+    },
+    "per_capture_metrics": {
+      "763": {
+        "mean_nn_mm": 0.889,
+        "p90_nn_mm": 1.851,
+        "max_nn_mm": 3.952,
+        "centerline_p90_mm": 1.551,
+        "tangent_p90_deg": 12.619,
+        "corridor_inlier_ratio": 0.913,
+        "endpoint_start_mm": 1.361,
+        "endpoint_end_mm": 2.203,
+        "max_contiguous_outlier_points": 3.0
+      },
+      "978": {
+        "mean_nn_mm": 1.071,
+        "p90_nn_mm": 2.148,
+        "max_nn_mm": 3.021,
+        "centerline_p90_mm": 1.551,
+        "tangent_p90_deg": 12.62,
+        "corridor_inlier_ratio": 0.913,
+        "endpoint_start_mm": 1.361,
+        "endpoint_end_mm": 2.203,
+        "max_contiguous_outlier_points": 3.0
+      }
+    },
+    "threshold_version": "seam_eval/v0_initial_2026-03-31",
+    "evaluated_at": "2026-03-31T15:25:05+09:00",
+    "source_commit": "d5733e2c39dae4ed148ce217d1bf82107f0c16f8",
+    "reviewed_by": "hanmech"
+  },
+  "decision": {
+    "promotion_reason": "retained_as_candidate_after_manual_override_selected",
+    "promoted_from": null,
+    "decision_basis": {
+      "promotion_policy_version": "seam_promotion/v0_initial_2026-03-31",
+      "promotion_mode": "manual_review_with_recorded_evidence",
+      "promotion_criteria": {
+        "corridor_pass_all": true,
+        "worst_endpoint_lt_mm": 2.5,
+        "worst_contiguous_outlier_points_lte": 3
+      },
+      "required_captures": [
+        "763",
+        "978"
+      ],
+      "captures_compared": [
+        "741",
+        "763",
+        "978"
+      ],
+      "preferred_over": [],
+      "metric_priority": [
+        "nn",
+        "centerline",
+        "tangent",
+        "corridor"
+      ]
+    }
+  },
+  "notes": [
+    "Candidate CAD edge-chain seam retained for comparison only"
+  ]
+}

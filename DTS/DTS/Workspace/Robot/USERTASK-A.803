@@ -1,0 +1,55 @@
+REM "* TCP server SW"
+
+*INITIAL
+L50%=50001 'port number
+'(0:TCP, 1:UDP)
+L51%=18
+SOCKCREATE 15,0
+IF E1%<0 THEN *RESET
+'SOCKBIND 14,L50%
+SOCKCONNECT 15,L51%,L50%,1
+IF E1%<0 THEN *RESET
+'SOCKWAIT 14,15,0
+'IF E1%<0 THEN *RESET
+
+*INITIAL1
+SOCKRECV 15,15,0,0,V10%
+GETSTR 15,V11$,0,V10%
+V12$ = LEFT$(V11$,1)
+IF V12$ = "S"
+	V101% = 0
+	V13! = 1
+	V14! = VAL(MID$(V11$,3,8)) 'Quantity of Entire
+	V16! = VAL(MID$(V11$,12,8)) 'Quantity of Outer
+	SOCKSENDSTR 15,"OK",5,0,V6%
+    GOTO *INITIAL1
+ENDIF
+IF V12$ = "P"	
+	V20% = 1
+	WHILE V20% <> 7
+		strData[V20%, V13!] = MID$(V11$,3+9*(V20%-1),8)	
+		strData[V20%, V13!+1] = MID$(V11$,57+9*(V20%-1),8)
+		strData[V20%, V13!+2] = MID$(V11$,111+9*(V20%-1),8)
+		V![100+V20%] = VAL(strData[V20%, V13!])
+		V![110+V20%] = VAL(strData[V20%, V13!+1])
+		V![120+V20%] = VAL(strData[V20%, V13!+2])
+		angData[V20%,V13!] = V![100+V20%]
+		angData[V20%,V13!+1] = V![110+V20%]
+		angData[V20%,V13!+2] = V![120+V20%]
+		V20% = V20% + 1
+	ENDW
+	V13! = V13! + 3
+     SOCKSENDSTR 15,"OK",5,0,V6%
+     GOTO *INITIAL1
+ENDIF
+IF V12$ = "F"
+     SOCKSENDSTR 15,"Start",5,0,V6%
+	V101% = 1
+     V100%=1
+     GOTO *RESET
+ENDIF
+GOTO *INITIAL1
+*RESET
+SOCKCLOSE 14
+SOCKCLOSE 15
+EXIT

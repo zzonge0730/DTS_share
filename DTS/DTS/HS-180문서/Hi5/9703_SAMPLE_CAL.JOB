@@ -1,0 +1,47 @@
+Program File Format Version : 1.6  MechType: 739(HH4-01)  TotalAxis: 6  AuxAxis: 0
+     REM ROBOT Calibration sample
+     '_
+     V500$="192.168.1.10"
+     V500%=8000
+     V501%=1
+     CALL 9821_MMH_OPEN
+     DELAY 1.0
+     '_
+     P501=(0,0,0,0,0,0,&H0001)R
+     '_
+     V508%=0
+     '_
+     *ON_Cal
+     P500=P*
+     '_
+     CALL 9812_MMH_RobotCal
+     IF V504$<>"7101" AND V504$<>"7100" THEN
+     REM ERROR OCCURED
+     STOP
+     ENDIF
+     '_
+     V508%=1
+     LV1%=VAL(V505$)
+     IF LV1%=0 THEN
+     P501.X=VAL(V506$)
+     P501.Y=VAL(V507$)
+     P501.Z=VAL(V508$)
+     P501.RX=VAL(V509$)
+     P501.RY=VAL(V510$)
+     P501.RZ=VAL(V511$)
+     '_
+     DELAY 2.0
+S1   MOVE P,P501,S=10%,A=0,T=5
+     GOTO *ON_Cal
+     ELSEIF LV1%=1 THEN
+     PRINT #0,"ROBOT CALIBRATION FINISHED !"
+S1   MOVE P,P500,S=10%,A=0,T=5
+     ENDIF
+     '_
+     CALL 9805_MMH_StopVIZ
+     IF (V504$ <> "2104") THEN
+     REM ERROR OCCURED
+     STOP
+     ENDIF
+     '_
+     END

@@ -1,0 +1,36 @@
+Program File Format Version : 1.6  MechType: 739(HH4-01)  TotalAxis: 6  AuxAxis: 0
+     '9824_MMH_RECV
+     'RECEIVE STRING
+     INPUT ENET1,V502$,10,*RECV_ERR
+     PRINT #0,V502$
+     DELAY .5
+     IF (V502$ <> "") THEN
+     LV1$=V502$
+     LV1%=1
+     LV2%=503
+     LV3%=0
+     REM _
+     *NEXT
+     IF (LV1% >= 1) THEN
+     LV4%=LEN(LV1$)
+     LV3%=STRPOS(LV1$,",")
+     IF (LV3% >= 1) THEN
+     V$[LV2%]=LEFT$(LV1$, LV3% - 1)
+     LV1$=MID$(LV1$, LV3%+1, LV4%)
+     LV2%=LV2%+1
+     GOTO *NEXT
+     ELSE
+     V$[LV2%]=LEFT$(LV1$, LV4%)
+     ENDIF
+     REM _
+     ENDIF
+     REM _
+     ENDIF
+     GOTO *FINISH
+     *RECV_ERR
+     PRINT #0,"ERROR : RECEIVE ERROR"
+     V502$=""
+     STOP
+     *FINISH
+     V502$=""
+     END 'program end

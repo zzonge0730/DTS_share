@@ -1,0 +1,139 @@
+{
+  "schema_version": "seam_asset/v1",
+  "seam_name": "U1_right",
+  "status": "active",
+  "variant": "default",
+  "geometry": {
+    "csv_path": "data/battery_case/cad_seams/seam_U1_right.csv",
+    "units": "mm",
+    "point_count": 131,
+    "start_xyz_mm": [
+      1318.4233,
+      408.0,
+      -194.5573
+    ],
+    "end_xyz_mm": [
+      1514.3378,
+      408.0,
+      -194.5573
+    ],
+    "bbox_min_xyz_mm": [
+      1318.4233,
+      408.0,
+      -194.5573
+    ],
+    "bbox_max_xyz_mm": [
+      1514.3378,
+      437.3767,
+      -194.5573
+    ],
+    "bbox_size_xyz_mm": [
+      195.9145000000001,
+      29.376700000000028,
+      0.0
+    ],
+    "polyline_length_mm": 245.3710463441273,
+    "avg_step_mm": 1.8874695872625178,
+    "max_step_mm": 2.0,
+    "start_end_distance_mm": 195.9145000000001
+  },
+  "source": {
+    "kind": "cad_edge_chain",
+    "model_name": "P7375_P1000_EOP7S051_D_",
+    "model_format": "STEP",
+    "model_path": null,
+    "selection": {
+      "edge_chain": [
+        "Edge853",
+        "Edge855",
+        "Edge857",
+        "Edge859",
+        "Edge861"
+      ]
+    }
+  },
+  "runtime_contract": {
+    "snap_strategy": "ref_pcd_no_snap",
+    "orientation_source": "runtime_from_ref_pcd_normals"
+  },
+  "validation": {
+    "captures_tested": [
+      "763",
+      "978"
+    ],
+    "metric_summary": {
+      "avg_mean_nn_mm": 1.1237467997689015,
+      "avg_p90_nn_mm": 1.4966498883543142,
+      "worst_max_nn_mm": 3.6338140053609607,
+      "avg_centerline_p90_mm": 0.0,
+      "avg_tangent_p90_deg": 1.0305959579886636e-06,
+      "avg_corridor_inlier_ratio": 1.0,
+      "avg_endpoint_start_mm": 0.0,
+      "avg_endpoint_end_mm": 0.0,
+      "worst_contiguous_outlier_points": 0.0,
+      "corridor_pass": true
+    },
+    "per_capture_metrics": {
+      "763": {
+        "mean_nn_mm": 1.422851400112682,
+        "p90_nn_mm": 1.7352589646202918,
+        "max_nn_mm": 3.6338140053609607,
+        "centerline_p90_mm": 0.0,
+        "tangent_p90_deg": 8.537736462515939e-07,
+        "corridor_inlier_ratio": 1.0,
+        "endpoint_start_mm": 0.0,
+        "endpoint_end_mm": 0.0,
+        "max_contiguous_outlier_points": 0.0
+      },
+      "978": {
+        "mean_nn_mm": 0.8246421994251211,
+        "p90_nn_mm": 1.2580408120883368,
+        "max_nn_mm": 1.8648109762747964,
+        "centerline_p90_mm": 0.0,
+        "tangent_p90_deg": 1.2074182697257333e-06,
+        "corridor_inlier_ratio": 1.0,
+        "endpoint_start_mm": 0.0,
+        "endpoint_end_mm": 0.0,
+        "max_contiguous_outlier_points": 0.0
+      }
+    },
+    "threshold_version": "seam_eval/v0_initial_2026-03-31",
+    "evaluated_at": "2026-03-31T17:53:11+09:00",
+    "source_commit": "d5733e2c39dae4ed148ce217d1bf82107f0c16f8",
+    "reviewed_by": "hanmech"
+  },
+  "decision": {
+    "promotion_reason": "selected_no_snap_transfer_policy",
+    "promoted_from": null,
+    "decision_basis": {
+      "promotion_policy_version": "seam_promotion/v0_initial_2026-03-31",
+      "promotion_mode": "manual_review_with_recorded_evidence",
+      "promotion_criteria": {
+        "corridor_pass_all": true,
+        "worst_endpoint_lt_mm": 2.5,
+        "worst_contiguous_outlier_points_lte": 3
+      },
+      "required_captures": [
+        "763",
+        "978"
+      ],
+      "captures_compared": [
+        "763",
+        "978"
+      ],
+      "transfer_eval_json": "data/battery_case/transfer_eval_U1_right_2026-03-31.json",
+      "selected_transfer_policy": "no_snap",
+      "preferred_over": [],
+      "metric_priority": [
+        "nn",
+        "centerline",
+        "tangent",
+        "corridor"
+      ]
+    }
+  },
+  "notes": [
+    "Active CAD edge-chain seam",
+    "No-snap policy selected because constrained variants improved NN but failed nominal-preservation corridor"
+  ]
+}

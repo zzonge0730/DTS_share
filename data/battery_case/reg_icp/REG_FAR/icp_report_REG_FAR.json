@@ -1,0 +1,510 @@
+{
+  "capture_id": "REG_FAR",
+  "raw_capture_ply": "/mnt/c/Users/hanmech/Desktop/DTS_image/captures/reg/point_cloud_20260406_132743_484.ply",
+  "reference_pcd": "/mnt/c/Users/hanmech/Desktop/DTS_image/pipeline/ref_battery_case.ply",
+  "transform_path": "data/battery_case/reg_icp/REG_FAR/icp_transform_REG_FAR.npy",
+  "roi_min": [
+    -450.0,
+    -350.0,
+    1150.0
+  ],
+  "roi_max": [
+    450.0,
+    250.0,
+    1450.0
+  ],
+  "best_seed_name": "763",
+  "fitness": 0.5594841678270872,
+  "rmse_mm": 0.9527944542692248,
+  "candidate_results": [
+    {
+      "seed_name": "763",
+      "fitness": 0.8089019126268894,
+      "rmse_mm": 1.5755281731906594,
+      "coarse_fitness": 0.8655940351221426,
+      "coarse_rmse_mm": 3.2054824045458985,
+      "stage_metrics": [
+        {
+          "voxel_mm": 8.0,
+          "method": "point_to_plane",
+          "fitness": 0.8655940351221426,
+          "rmse_mm": 3.2054824045458985
+        },
+        {
+          "voxel_mm": 4.0,
+          "method": "point_to_plane",
+          "fitness": 0.8606396954341939,
+          "rmse_mm": 2.1434460231397714
+        },
+        {
+          "voxel_mm": 2.0,
+          "method": "point_to_plane",
+          "fitness": 0.8530741509227913,
+          "rmse_mm": 1.8187948052635372
+        },
+        {
+          "voxel_mm": 1.0,
+          "method": "point_to_plane",
+          "fitness": 0.8089019126268894,
+          "rmse_mm": 1.5755281731906594
+        }
+      ]
+    },
+    {
+      "seed_name": "741",
+      "fitness": 0.10519123020178853,
+      "rmse_mm": 1.9369303434268814,
+      "coarse_fitness": 0.3470028450897675,
+      "coarse_rmse_mm": 11.547972695391785,
+      "stage_metrics": [
+        {
+          "voxel_mm": 8.0,
+          "method": "point_to_plane",
+          "fitness": 0.3470028450897675,
+          "rmse_mm": 11.547972695391785
+        },
+        {
+          "voxel_mm": 4.0,
+          "method": "point_to_plane",
+          "fitness": 0.2351537574733907,
+          "rmse_mm": 5.572851053149845
+        },
+        {
+          "voxel_mm": 2.0,
+          "method": "point_to_plane",
+          "fitness": 0.17176659022241636,
+          "rmse_mm": 3.215475396615194
+        },
+        {
+          "voxel_mm": 1.0,
+          "method": "point_to_plane",
+          "fitness": 0.10519123020178853,
+          "rmse_mm": 1.9369303434268814
+        }
+      ]
+    }
+  ],
+  "seed_pruning": {
+    "evaluated_seed_count": 4,
+    "retained_seed_count": 2,
+    "retained_seed_names": [
+      "763",
+      "741"
+    ],
+    "pruned_seed_names": [
+      "978",
+      "473"
+    ],
+    "stage1_rankings": [
+      {
+        "seed_name": "763",
+        "fitness": 0.8655940351221426,
+        "rmse_mm": 3.2054824045458985
+      },
+      {
+        "seed_name": "741",
+        "fitness": 0.3470028450897675,
+        "rmse_mm": 11.547972695391785
+      },
+      {
+        "seed_name": "978",
+        "fitness": 0.3470028450897675,
+        "rmse_mm": 11.54801018326039
+      },
+      {
+        "seed_name": "473",
+        "fitness": 0.1920926125772589,
+        "rmse_mm": 7.748462037989517
+      }
+    ]
+  },
+  "seam_local_metrics": {
+    "seams": {
+      "U1_right": {
+        "n_points": 28,
+        "mean_nn_mm": 0.5196630797958631,
+        "p90_nn_mm": 1.1888504982692027,
+        "max_nn_mm": 2.067628146567792,
+        "min_nn_mm": 0.09685581570712105,
+        "centerline_mean_mm": 1.0779822051038264,
+        "centerline_p90_mm": 1.4771831826619166,
+        "centerline_max_mm": 1.8790712785027222,
+        "tangent_mean_deg": 2.9089829828025477,
+        "tangent_p90_deg": 5.3909967260742,
+        "tangent_max_deg": 8.479910660478664,
+        "corridor_inlier_ratio": 1.0,
+        "corridor_pass": true,
+        "endpoint_start_mm": 1.796202802365329,
+        "endpoint_end_mm": 1.4011799857778051,
+        "max_contiguous_outlier_points": 0.0,
+        "corridor_centerline_threshold_mm": 2.0,
+        "corridor_tangent_threshold_deg": 15.0
+      },
+      "U2_left": {
+        "n_points": 21,
+        "mean_nn_mm": 0.5338030393321486,
+        "p90_nn_mm": 0.9113634451458583,
+        "max_nn_mm": 1.316875549681858,
+        "min_nn_mm": 0.10161012051196608,
+        "centerline_mean_mm": 1.340962585829933,
+        "centerline_p90_mm": 2.108233037892156,
+        "centerline_max_mm": 2.602829058737041,
+        "tangent_mean_deg": 2.783294983780994,
+        "tangent_p90_deg": 6.167341438165877,
+        "tangent_max_deg": 7.130173487015222,
+        "corridor_inlier_ratio": 0.8095238095238095,
+        "corridor_pass": false,
+        "endpoint_start_mm": 0.7695393334427463,
+        "endpoint_end_mm": 0.4541040026610595,
+        "max_contiguous_outlier_points": 3.0,
+        "corridor_centerline_threshold_mm": 2.0,
+        "corridor_tangent_threshold_deg": 15.0
+      }
+    },
+    "summary": {
+      "avg_mean_nn_mm": 0.5267330595640058,
+      "avg_p90_nn_mm": 1.0501069717075304,
+      "worst_max_nn_mm": 2.067628146567792,
+      "avg_centerline_mean_mm": 1.2094723954668796,
+      "avg_centerline_p90_mm": 1.7927081102770361,
+      "worst_centerline_max_mm": 2.602829058737041,
+      "avg_tangent_mean_deg": 2.846138983291771,
+      "avg_tangent_p90_deg": 5.779169082120038,
+      "worst_tangent_max_deg": 8.479910660478664,
+      "avg_corridor_inlier_ratio": 0.9047619047619048,
+      "min_corridor_inlier_ratio": 0.8095238095238095,
+      "avg_endpoint_start_mm": 1.2828710679040376,
+      "avg_endpoint_end_mm": 0.9276419942194323,
+      "worst_endpoint_start_mm": 1.796202802365329,
+      "worst_endpoint_end_mm": 1.4011799857778051,
+      "worst_contiguous_outlier_points": 3.0,
+      "total_points": 49.0,
+      "corridor_pass": false
+    },
+    "step_mm": 10.0
+  },
+  "optimize_seam_local_metrics": {
+    "seams": {
+      "U1_right": {
+        "n_points": 28,
+        "mean_nn_mm": 0.5196630797958631,
+        "p90_nn_mm": 1.1888504982692027,
+        "max_nn_mm": 2.067628146567792,
+        "min_nn_mm": 0.09685581570712105,
+        "centerline_mean_mm": 1.0779822051038264,
+        "centerline_p90_mm": 1.4771831826619166,
+        "centerline_max_mm": 1.8790712785027222,
+        "tangent_mean_deg": 2.9089829828025477,
+        "tangent_p90_deg": 5.3909967260742,
+        "tangent_max_deg": 8.479910660478664,
+        "corridor_inlier_ratio": 1.0,
+        "corridor_pass": true,
+        "endpoint_start_mm": 1.796202802365329,
+        "endpoint_end_mm": 1.4011799857778051,
+        "max_contiguous_outlier_points": 0.0,
+        "corridor_centerline_threshold_mm": 2.0,
+        "corridor_tangent_threshold_deg": 15.0
+      },
+      "U2_left": {
+        "n_points": 21,
+        "mean_nn_mm": 0.5338030393321486,
+        "p90_nn_mm": 0.9113634451458583,
+        "max_nn_mm": 1.316875549681858,
+        "min_nn_mm": 0.10161012051196608,
+        "centerline_mean_mm": 1.340962585829933,
+        "centerline_p90_mm": 2.108233037892156,
+        "centerline_max_mm": 2.602829058737041,
+        "tangent_mean_deg": 2.783294983780994,
+        "tangent_p90_deg": 6.167341438165877,
+        "tangent_max_deg": 7.130173487015222,
+        "corridor_inlier_ratio": 0.8095238095238095,
+        "corridor_pass": false,
+        "endpoint_start_mm": 0.7695393334427463,
+        "endpoint_end_mm": 0.4541040026610595,
+        "max_contiguous_outlier_points": 3.0,
+        "corridor_centerline_threshold_mm": 2.0,
+        "corridor_tangent_threshold_deg": 15.0
+      }
+    },
+    "summary": {
+      "avg_mean_nn_mm": 0.5267330595640058,
+      "avg_p90_nn_mm": 1.0501069717075304,
+      "worst_max_nn_mm": 2.067628146567792,
+      "avg_centerline_mean_mm": 1.2094723954668796,
+      "avg_centerline_p90_mm": 1.7927081102770361,
+      "worst_centerline_max_mm": 2.602829058737041,
+      "avg_tangent_mean_deg": 2.846138983291771,
+      "avg_tangent_p90_deg": 5.779169082120038,
+      "worst_tangent_max_deg": 8.479910660478664,
+      "avg_corridor_inlier_ratio": 0.9047619047619048,
+      "min_corridor_inlier_ratio": 0.8095238095238095,
+      "avg_endpoint_start_mm": 1.2828710679040376,
+      "avg_endpoint_end_mm": 0.9276419942194323,
+      "worst_endpoint_start_mm": 1.796202802365329,
+      "worst_endpoint_end_mm": 1.4011799857778051,
+      "worst_contiguous_outlier_points": 3.0,
+      "total_points": 49.0,
+      "corridor_pass": false
+    },
+    "step_mm": 10.0
+  },
+  "validation_seam_local_metrics": {
+    "seams": {
+      "S3_complex_bottom": {
+        "n_points": 21,
+        "mean_nn_mm": 0.7594152768796625,
+        "p90_nn_mm": 1.2428209601867244,
+        "max_nn_mm": 1.6784452331286257,
+        "min_nn_mm": 0.15444014488830407,
+        "centerline_mean_mm": 1.489750885784194,
+        "centerline_p90_mm": 2.144724806199911,
+        "centerline_max_mm": 2.3059823584878165,
+        "tangent_mean_deg": 4.557555529733903,
+        "tangent_p90_deg": 7.13189699073386,
+        "tangent_max_deg": 14.805111596497701,
+        "corridor_inlier_ratio": 0.8571428571428571,
+        "corridor_pass": false,
+        "endpoint_start_mm": 1.3611025567831732,
+        "endpoint_end_mm": 2.202600102207376,
+        "max_contiguous_outlier_points": 1.0,
+        "corridor_centerline_threshold_mm": 2.0,
+        "corridor_tangent_threshold_deg": 15.0
+      }
+    },
+    "summary": {
+      "avg_mean_nn_mm": 0.7594152768796625,
+      "avg_p90_nn_mm": 1.2428209601867244,
+      "worst_max_nn_mm": 1.6784452331286257,
+      "avg_centerline_mean_mm": 1.489750885784194,
+      "avg_centerline_p90_mm": 2.144724806199911,
+      "worst_centerline_max_mm": 2.3059823584878165,
+      "avg_tangent_mean_deg": 4.557555529733903,
+      "avg_tangent_p90_deg": 7.13189699073386,
+      "worst_tangent_max_deg": 14.805111596497701,
+      "avg_corridor_inlier_ratio": 0.8571428571428571,
+      "min_corridor_inlier_ratio": 0.8571428571428571,
+      "avg_endpoint_start_mm": 1.3611025567831732,
+      "avg_endpoint_end_mm": 2.202600102207376,
+      "worst_endpoint_start_mm": 1.3611025567831732,
+      "worst_endpoint_end_mm": 2.202600102207376,
+      "worst_contiguous_outlier_points": 1.0,
+      "total_points": 21.0,
+      "corridor_pass": false
+    },
+    "step_mm": 10.0
+  },
+  "combined_seam_local_metrics": {
+    "seams": {
+      "U1_right": {
+        "n_points": 28,
+        "mean_nn_mm": 0.5196630797958631,
+        "p90_nn_mm": 1.1888504982692027,
+        "max_nn_mm": 2.067628146567792,
+        "min_nn_mm": 0.09685581570712105,
+        "centerline_mean_mm": 1.0779822051038264,
+        "centerline_p90_mm": 1.4771831826619166,
+        "centerline_max_mm": 1.8790712785027222,
+        "tangent_mean_deg": 2.9089829828025477,
+        "tangent_p90_deg": 5.3909967260742,
+        "tangent_max_deg": 8.479910660478664,
+        "corridor_inlier_ratio": 1.0,
+        "corridor_pass": true,
+        "endpoint_start_mm": 1.796202802365329,
+        "endpoint_end_mm": 1.4011799857778051,
+        "max_contiguous_outlier_points": 0.0,
+        "corridor_centerline_threshold_mm": 2.0,
+        "corridor_tangent_threshold_deg": 15.0
+      },
+      "U2_left": {
+        "n_points": 21,
+        "mean_nn_mm": 0.5338030393321486,
+        "p90_nn_mm": 0.9113634451458583,
+        "max_nn_mm": 1.316875549681858,
+        "min_nn_mm": 0.10161012051196608,
+        "centerline_mean_mm": 1.340962585829933,
+        "centerline_p90_mm": 2.108233037892156,
+        "centerline_max_mm": 2.602829058737041,
+        "tangent_mean_deg": 2.783294983780994,
+        "tangent_p90_deg": 6.167341438165877,
+        "tangent_max_deg": 7.130173487015222,
+        "corridor_inlier_ratio": 0.8095238095238095,
+        "corridor_pass": false,
+        "endpoint_start_mm": 0.7695393334427463,
+        "endpoint_end_mm": 0.4541040026610595,
+        "max_contiguous_outlier_points": 3.0,
+        "corridor_centerline_threshold_mm": 2.0,
+        "corridor_tangent_threshold_deg": 15.0
+      },
+      "S3_complex_bottom": {
+        "n_points": 21,
+        "mean_nn_mm": 0.7594152768796625,
+        "p90_nn_mm": 1.2428209601867244,
+        "max_nn_mm": 1.6784452331286257,
+        "min_nn_mm": 0.15444014488830407,
+        "centerline_mean_mm": 1.489750885784194,
+        "centerline_p90_mm": 2.144724806199911,
+        "centerline_max_mm": 2.3059823584878165,
+        "tangent_mean_deg": 4.557555529733903,
+        "tangent_p90_deg": 7.13189699073386,
+        "tangent_max_deg": 14.805111596497701,
+        "corridor_inlier_ratio": 0.8571428571428571,
+        "corridor_pass": false,
+        "endpoint_start_mm": 1.3611025567831732,
+        "endpoint_end_mm": 2.202600102207376,
+        "max_contiguous_outlier_points": 1.0,
+        "corridor_centerline_threshold_mm": 2.0,
+        "corridor_tangent_threshold_deg": 15.0
+      }
+    },
+    "summary": {
+      "avg_mean_nn_mm": 0.6042937986692247,
+      "avg_p90_nn_mm": 1.1143449678672617,
+      "worst_max_nn_mm": 2.067628146567792,
+      "avg_centerline_mean_mm": 1.3028985589059843,
+      "avg_centerline_p90_mm": 1.9100470089179946,
+      "worst_centerline_max_mm": 2.602829058737041,
+      "avg_tangent_mean_deg": 3.4166111654391482,
+      "avg_tangent_p90_deg": 6.230078384991312,
+      "worst_tangent_max_deg": 14.805111596497701,
+      "avg_corridor_inlier_ratio": 0.8888888888888888,
+      "min_corridor_inlier_ratio": 0.8095238095238095,
+      "avg_endpoint_start_mm": 1.3089482308637495,
+      "avg_endpoint_end_mm": 1.3526280302154134,
+      "worst_endpoint_start_mm": 1.796202802365329,
+      "worst_endpoint_end_mm": 2.202600102207376,
+      "worst_contiguous_outlier_points": 3.0,
+      "total_points": 70.0,
+      "corridor_pass": false
+    },
+    "step_mm": 10.0
+  },
+  "seam_local_refinement": {
+    "attempted": true,
+    "applied": true,
+    "reason": "improved_optimize_without_validation_regression",
+    "ref_local_count": 17410,
+    "meas_local_count": 123524,
+    "local_stages": [
+      {
+        "voxel_mm": 2.0,
+        "max_corr_mm": 4.0,
+        "max_iter": 50,
+        "method": "point_to_plane"
+      },
+      {
+        "voxel_mm": 1.0,
+        "max_corr_mm": 2.0,
+        "max_iter": 70,
+        "method": "point_to_plane"
+      }
+    ],
+    "stage_metrics": [
+      {
+        "voxel_mm": 2.0,
+        "method": "point_to_plane",
+        "fitness": 0.6711904410680042,
+        "rmse_mm": 1.7186031841046678
+      },
+      {
+        "voxel_mm": 1.0,
+        "method": "point_to_plane",
+        "fitness": 0.5594841678270872,
+        "rmse_mm": 0.9527944542692248
+      }
+    ],
+    "before_optimize_summary": {
+      "avg_mean_nn_mm": 0.9975884647306306,
+      "avg_p90_nn_mm": 1.4929007215250434,
+      "worst_max_nn_mm": 2.1688209447902573,
+      "avg_centerline_mean_mm": 1.20947239546686,
+      "avg_centerline_p90_mm": 1.7927081102770819,
+      "worst_centerline_max_mm": 2.6028290587371505,
+      "avg_tangent_mean_deg": 2.8461389832915445,
+      "avg_tangent_p90_deg": 5.7791690821197985,
+      "worst_tangent_max_deg": 8.479910660474697,
+      "avg_corridor_inlier_ratio": 0.9047619047619048,
+      "min_corridor_inlier_ratio": 0.8095238095238095,
+      "avg_endpoint_start_mm": 1.2828710679038453,
+      "avg_endpoint_end_mm": 0.9276419942193249,
+      "worst_endpoint_start_mm": 1.796202802365187,
+      "worst_endpoint_end_mm": 1.4011799857779474,
+      "worst_contiguous_outlier_points": 3.0,
+      "total_points": 49.0,
+      "corridor_pass": false
+    },
+    "after_optimize_summary": {
+      "avg_mean_nn_mm": 0.5267330595640058,
+      "avg_p90_nn_mm": 1.0501069717075304,
+      "worst_max_nn_mm": 2.067628146567792,
+      "avg_centerline_mean_mm": 1.2094723954668796,
+      "avg_centerline_p90_mm": 1.7927081102770361,
+      "worst_centerline_max_mm": 2.602829058737041,
+      "avg_tangent_mean_deg": 2.846138983291771,
+      "avg_tangent_p90_deg": 5.779169082120038,
+      "worst_tangent_max_deg": 8.479910660478664,
+      "avg_corridor_inlier_ratio": 0.9047619047619048,
+      "min_corridor_inlier_ratio": 0.8095238095238095,
+      "avg_endpoint_start_mm": 1.2828710679040376,
+      "avg_endpoint_end_mm": 0.9276419942194323,
+      "worst_endpoint_start_mm": 1.796202802365329,
+      "worst_endpoint_end_mm": 1.4011799857778051,
+      "worst_contiguous_outlier_points": 3.0,
+      "total_points": 49.0,
+      "corridor_pass": false
+    },
+    "before_validation_summary": {
+      "avg_mean_nn_mm": 0.9309428510454365,
+      "avg_p90_nn_mm": 1.4107017760630156,
+      "worst_max_nn_mm": 2.4135257998189585,
+      "avg_centerline_mean_mm": 1.4897508857840973,
+      "avg_centerline_p90_mm": 2.1447248061996107,
+      "worst_centerline_max_mm": 2.305982358488021,
+      "avg_tangent_mean_deg": 4.557555529733761,
+      "avg_tangent_p90_deg": 7.1318969907336545,
+      "worst_tangent_max_deg": 14.805111596497005,
+      "avg_corridor_inlier_ratio": 0.8571428571428571,
+      "min_corridor_inlier_ratio": 0.8571428571428571,
+      "avg_endpoint_start_mm": 1.361102556783166,
+      "avg_endpoint_end_mm": 2.20260010220719,
+      "worst_endpoint_start_mm": 1.361102556783166,
+      "worst_endpoint_end_mm": 2.20260010220719,
+      "worst_contiguous_outlier_points": 1.0,
+      "total_points": 21.0,
+      "corridor_pass": false
+    },
+    "after_validation_summary": {
+      "avg_mean_nn_mm": 0.7594152768796625,
+      "avg_p90_nn_mm": 1.2428209601867244,
+      "worst_max_nn_mm": 1.6784452331286257,
+      "avg_centerline_mean_mm": 1.489750885784194,
+      "avg_centerline_p90_mm": 2.144724806199911,
+      "worst_centerline_max_mm": 2.3059823584878165,
+      "avg_tangent_mean_deg": 4.557555529733903,
+      "avg_tangent_p90_deg": 7.13189699073386,
+      "worst_tangent_max_deg": 14.805111596497701,
+      "avg_corridor_inlier_ratio": 0.8571428571428571,
+      "min_corridor_inlier_ratio": 0.8571428571428571,
+      "avg_endpoint_start_mm": 1.3611025567831732,
+      "avg_endpoint_end_mm": 2.202600102207376,
+      "worst_endpoint_start_mm": 1.3611025567831732,
+      "worst_endpoint_end_mm": 2.202600102207376,
+      "worst_contiguous_outlier_points": 1.0,
+      "total_points": 21.0,
+      "corridor_pass": false
+    }
+  },
+  "ref_counts": {
+    "raw": 200000,
+    "coarse": 18148,
+    "fine": 190631
+  },
+  "meas_counts": {
+    "raw": 1122975,
+    "coarse": 10193,
+    "fine": 461721
+  },
+  "coarse_voxel_mm": 8.0,
+  "fine_voxel_mm": 1.0,
+  "coarse_max_corr_mm": 24.0,
+  "fine_max_corr_mm": 3.0
+}

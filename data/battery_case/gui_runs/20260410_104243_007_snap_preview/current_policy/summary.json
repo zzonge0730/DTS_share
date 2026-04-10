@@ -1,0 +1,108 @@
+{
+  "capture_id": "007",
+  "run_dir": "/home/hanmech/DTS_share/data/battery_case/gui_runs/20260410_104243_007_snap_preview/current_policy",
+  "variant": "policy_current",
+  "variant_label": "policy_current",
+  "compare_label": "\ud604\uc7ac \uc815\ucc45",
+  "edge_snap": false,
+  "step_mm": 5.0,
+  "snap_mode_overrides": {},
+  "results": [
+    {
+      "name": "U1_right",
+      "n_poses": 51,
+      "score": {
+        "mean_nn_mm": 0.7467763260845631,
+        "p90_nn_mm": 0.8598389945564725,
+        "max_nn_mm": 3.215230993246376,
+        "min_nn_mm": 0.11658805683758373
+      },
+      "pose_csv": "/home/hanmech/DTS_share/data/battery_case/gui_runs/20260410_104243_007_snap_preview/current_policy/U1_right/U1_right_pose.csv",
+      "txt_1100": "/home/hanmech/DTS_share/data/battery_case/gui_runs/20260410_104243_007_snap_preview/current_policy/U1_right/U1_right_1100.txt"
+    },
+    {
+      "name": "U2_left",
+      "n_poses": 41,
+      "score": {
+        "mean_nn_mm": 0.5409444090459153,
+        "p90_nn_mm": 0.9035519447125242,
+        "max_nn_mm": 1.0554163137566284,
+        "min_nn_mm": 0.06400091339489658
+      },
+      "pose_csv": "/home/hanmech/DTS_share/data/battery_case/gui_runs/20260410_104243_007_snap_preview/current_policy/U2_left/U2_left_pose.csv",
+      "txt_1100": "/home/hanmech/DTS_share/data/battery_case/gui_runs/20260410_104243_007_snap_preview/current_policy/U2_left/U2_left_1100.txt"
+    },
+    {
+      "name": "S3_complex_bottom",
+      "n_poses": 39,
+      "score": {
+        "mean_nn_mm": 1.630566191383608,
+        "p90_nn_mm": 1.9842906067582833,
+        "max_nn_mm": 2.5841067419641464,
+        "min_nn_mm": 0.5878972770591783
+      },
+      "pose_csv": "/home/hanmech/DTS_share/data/battery_case/gui_runs/20260410_104243_007_snap_preview/current_policy/S3_complex_bottom/S3_complex_bottom_pose.csv",
+      "txt_1100": "/home/hanmech/DTS_share/data/battery_case/gui_runs/20260410_104243_007_snap_preview/current_policy/S3_complex_bottom/S3_complex_bottom_1100.txt"
+    },
+    {
+      "name": "S4_right_step",
+      "n_poses": 62,
+      "score": {
+        "mean_nn_mm": 1.3835727151609,
+        "p90_nn_mm": 1.7021518046680497,
+        "max_nn_mm": 1.8431418695190152,
+        "min_nn_mm": 0.6839017866316061
+      },
+      "pose_csv": "/home/hanmech/DTS_share/data/battery_case/gui_runs/20260410_104243_007_snap_preview/current_policy/S4_right_step/S4_right_step_pose.csv",
+      "txt_1100": "/home/hanmech/DTS_share/data/battery_case/gui_runs/20260410_104243_007_snap_preview/current_policy/S4_right_step/S4_right_step_1100.txt"
+    },
+    {
+      "name": "S5_long_bottom_steps",
+      "n_poses": 106,
+      "score": {
+        "mean_nn_mm": 0.7408138558745124,
+        "p90_nn_mm": 1.072279413850107,
+        "max_nn_mm": 2.274930437940953,
+        "min_nn_mm": 0.15669689880835494
+      },
+      "pose_csv": "/home/hanmech/DTS_share/data/battery_case/gui_runs/20260410_104243_007_snap_preview/current_policy/S5_long_bottom_steps/S5_long_bottom_steps_pose.csv",
+      "txt_1100": "/home/hanmech/DTS_share/data/battery_case/gui_runs/20260410_104243_007_snap_preview/current_policy/S5_long_bottom_steps/S5_long_bottom_steps_1100.txt"
+    }
+  ],
+  "overlay_path": "/home/hanmech/DTS_share/data/battery_case/gui_runs/20260410_104243_007_snap_preview/current_policy/overlay.png",
+  "overlay_stats": {
+    "U1_right_pose": {
+      "mapped_points": 51.0,
+      "mean_nn_mm": 0.7468143140086447,
+      "p90_nn_mm": 0.8600754919070694,
+      "max_nn_mm": 3.215194239928352
+    },
+    "U2_left_pose": {
+      "mapped_points": 41.0,
+      "mean_nn_mm": 0.5409684479434822,
+      "p90_nn_mm": 0.9035274115054338,
+      "max_nn_mm": 1.0558492868418294
+    },
+    "S3_complex_bottom_pose": {
+      "mapped_points": 39.0,
+      "mean_nn_mm": 1.6305936308358866,
+      "p90_nn_mm": 1.9844801923451194,
+      "max_nn_mm": 2.584241059871218
+    },
+    "S4_right_step_pose": {
+      "mapped_points": 62.0,
+      "mean_nn_mm": 1.383622575217494,
+      "p90_nn_mm": 1.702315990202681,
+      "max_nn_mm": 1.8430091913423507
+    },
+    "S5_long_bottom_steps_pose": {
+      "mapped_points": 106.0,
+      "mean_nn_mm": 0.7407951389681289,
+      "p90_nn_mm": 1.0718998284608279,
+      "max_nn_mm": 2.274955489253346
+    }
+  },
+  "overlay_warning": null,
+  "raw_capture_ply": "/mnt/c/Users/hanmech/Desktop/DTS_image/captures/reg/point_cloud_20260406_133136_007.ply",
+  "rgb_path": "/mnt/c/Users/hanmech/Desktop/DTS_image/captures/reg/rgb_image_20260406_133136_007.png"
+}

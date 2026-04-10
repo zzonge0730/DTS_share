@@ -1,0 +1,130 @@
+{
+  "schema_version": "seam_asset/v1",
+  "seam_name": "S4_right_step",
+  "status": "candidate",
+  "variant": "cad_edge_chain",
+  "geometry": {
+    "csv_path": "/mnt/c/Users/hanmech/Desktop/DTS_image/cad/seam_S4_right_step.csv",
+    "units": "mm",
+    "point_count": 155,
+    "start_xyz_mm": [
+      1424.9489,
+      364.3,
+      -198.8
+    ],
+    "end_xyz_mm": [
+      1675.6868,
+      316.0593,
+      -198.8
+    ],
+    "bbox_min_xyz_mm": [
+      1424.9489,
+      316.0593,
+      -198.8
+    ],
+    "bbox_max_xyz_mm": [
+      1675.6868,
+      364.3,
+      -198.8
+    ],
+    "bbox_size_xyz_mm": [
+      250.73789999999985,
+      48.240700000000004,
+      0.0
+    ],
+    "polyline_length_mm": 302.68020948337914,
+    "avg_step_mm": 1.9654559057362282,
+    "max_step_mm": 2.0,
+    "start_end_distance_mm": 255.3363656686997
+  },
+  "source": {
+    "kind": "cad_edge_chain",
+    "model_name": "P7375_P1000_EOP7S051_D_",
+    "model_format": "STEP",
+    "model_path": null,
+    "selection": {
+      "edge_chain": [
+        "Edge78",
+        "Edge51",
+        "Edge97",
+        "Edge56",
+        "Edge81",
+        "Edge84",
+        "Edge96"
+      ]
+    }
+  },
+  "runtime_contract": {
+    "snap_strategy": "ref_pcd_no_snap",
+    "orientation_source": "runtime_from_ref_pcd_normals"
+  },
+  "validation": {
+    "captures_tested": [
+      "763",
+      "978"
+    ],
+    "metric_summary": {
+      "avg_mean_nn_mm": 1.2062995179704266,
+      "avg_p90_nn_mm": 1.5902429085243037,
+      "worst_max_nn_mm": 1.7916890955650946,
+      "avg_centerline_p90_mm": 0.0,
+      "avg_tangent_p90_deg": 0.0,
+      "avg_corridor_inlier_ratio": 1.0,
+      "avg_endpoint_start_mm": 0.0,
+      "avg_endpoint_end_mm": 0.0,
+      "worst_contiguous_outlier_points": 0.0,
+      "corridor_pass": true
+    },
+    "per_capture_metrics": {
+      "763": {
+        "mean_nn_mm": 1.161389242322642,
+        "p90_nn_mm": 1.5776341278691481,
+        "max_nn_mm": 1.7916890955650946,
+        "centerline_p90_mm": 0.0,
+        "tangent_p90_deg": 0.0,
+        "corridor_inlier_ratio": 1.0,
+        "endpoint_start_mm": 0.0,
+        "endpoint_end_mm": 0.0,
+        "max_contiguous_outlier_points": 0.0
+      },
+      "978": {
+        "mean_nn_mm": 1.2512097936182114,
+        "p90_nn_mm": 1.6028516891794593,
+        "max_nn_mm": 1.775044645038081,
+        "centerline_p90_mm": 0.0,
+        "tangent_p90_deg": 0.0,
+        "corridor_inlier_ratio": 1.0,
+        "endpoint_start_mm": 0.0,
+        "endpoint_end_mm": 0.0,
+        "max_contiguous_outlier_points": 0.0
+      }
+    },
+    "threshold_version": "seam_eval/v0_initial_2026-03-31",
+    "evaluated_at": "2026-03-31T17:54:48+09:00",
+    "source_commit": "d5733e2c39dae4ed148ce217d1bf82107f0c16f8",
+    "reviewed_by": null
+  },
+  "decision": {
+    "promotion_reason": "candidate_nominal_transfer_baseline",
+    "promoted_from": null,
+    "decision_basis": {
+      "promotion_policy_version": "seam_promotion/v0_initial_2026-03-31",
+      "promotion_mode": "manual_review_with_recorded_evidence",
+      "promotion_criteria": {
+        "corridor_pass_all": true,
+        "worst_endpoint_lt_mm": 2.5,
+        "worst_contiguous_outlier_points_lte": 3
+      },
+      "required_captures": [
+        "763",
+        "978"
+      ],
+      "transfer_eval_json": "data/battery_case/transfer_eval_S4_right_step_2026-03-31.json",
+      "selected_transfer_policy": "no_snap"
+    }
+  },
+  "notes": [
+    "S4 evaluated as nominal transfer seam",
+    "No-snap selected as current candidate policy because generic surface snap caused transfer drift"
+  ]
+}

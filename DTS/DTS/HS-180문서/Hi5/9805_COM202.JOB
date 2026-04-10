@@ -1,0 +1,16 @@
+Program File Format Version : 1.6  MechType: 739(HH4-01)  TotalAxis: 6  AuxAxis: 0
+     'USAGE:9805_MMH_StopVIZ
+     '202, STOP VIZ
+     V501$="202"
+     CALL 9823_MMH_SEND
+     'ANSER
+     CALL 9824_MMH_RECV
+     IF V503$<>"202" THEN
+     PRINT #0, "ERROR : 202 CMD ERROR"
+     STOP
+     ENDIF
+     'IF V504$<>"2104" THEN
+     'PRINT #0, "ERROR : 202 IPC ERROR"
+     'STOP
+     'ENDIF
+     END

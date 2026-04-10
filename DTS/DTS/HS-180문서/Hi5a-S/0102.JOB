@@ -1,0 +1,18 @@
+Program File Format Version : 1.6  MechType: 370(HS220-01)  TotalAxis: 6  AuxAxis: 0
+     ENET2.IP="192.168.0.150"
+     ENET2.RPORT=2001
+     ENET2.LPORT=5001
+     ENET2.OPEN 1
+     CLR_RBUF ENET2
+     P[1110]=(0,0,0,0,0,0)A
+     _TEINPUT=13
+     _TEINPUT=10
+  20 P[1110]=P*
+     V111%=DIB1
+     V112%=DIB2
+     V113%=DIB3
+     V114%=DIB4
+     PRINT ENET2,P[1110],V111%,V112%,V113%,V114%
+     DELAY 0.02
+     GOTO 20
+     END

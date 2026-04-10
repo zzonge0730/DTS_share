@@ -1,0 +1,38 @@
+Program File Format Version : 1.6  MechType: 739(HH4-01)  TotalAxis: 6  AuxAxis: 0
+     REM VIZ-Index,Branch sample
+     '_
+     V500$="192.168.1.10"
+     V500%=8000
+     V501% =1
+     CALL 9821_MMH_OPEN
+     PRINT #0,"UDP OPEN OK !"
+     DELAY 1.0
+     '_
+     V505%=1
+     P500=P*
+     '_
+     CALL 9804_MMH_StartVIZ
+     IF (V504$ <> "2103") THEN
+     REM ERROR OCCURED
+     STOP
+     ENDIF
+     '_
+     V491%=11
+     V492%=2
+     CALL 9807_MMH_VIZindex
+     IF (V504$ <> "2106") THEN
+     REM ERROR OCCURED
+     STOP
+     ENDIF
+     '_
+     V490%=8
+     V491%=2
+     CALL 9806_MMH_VIZsetBRANCH
+     IF (V504$ <> "2105") THEN
+     REM ERROR OCCURED
+     STOP
+     ENDIF
+     '_
+     CALL 9805_MMH_StopVIZ
+     '_
+     END

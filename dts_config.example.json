@@ -1,0 +1,5 @@
+{
+    "_comment": "Copy this file to dts_config.json and edit paths for your environment.",
+    "data_root": "/path/to/your/DTS_image",
+    "_data_root_note": "External data directory containing: pipeline/, captures/, cad/ subdirs"
+}

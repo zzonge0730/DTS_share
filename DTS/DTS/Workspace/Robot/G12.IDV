@@ -1,0 +1,8 @@
+Entry Text File Format Version: 1.0
+_G12.IDV( ID Variable )
+giTot_num   AS Integer = 1
+gpPoses[1000] AS Pose
+giVel[1000] AS Integer
+giAcc[1000] AS Integer
+gtMT[1000]  AS String
+gtDO[1000]  AS String

@@ -1,0 +1,72 @@
+Program File Format Version : 1.6  MechType: 370(HS220-01)  TotalAxis: 6  AuxAxis: 0
+     DIM liIdx AS Integer
+     DIM liVel[200] AS Integer
+     DIM limotionType[200] AS Integer
+     FOR liIdx=1 TO 200
+     liVel[liIdx]=0
+     limotionType[liIdx]=0
+     NEXT
+     TaskStart SUB=1, JOB=102
+     V101%=0
+     ENET1.IP="192.168.0.150"
+     ENET1.RPORT=2000
+     ENET1.LPORT=5000
+     ENET1.OPEN 1
+     _TEINPUT=13
+     _TEINPUT=10
+     CLR_RBUF ENET1
+     
+     'connect server
+     
+     PRINT ENET1,"client OK"
+     INPUT ENET1,V101$
+     PRINT #0, V101$
+     
+     'wait command
+     
+  20 INPUT ENET1,V101%
+     PRINT ENET1,"20"
+     IF V101% > 0 THEN
+     FOR liIdx=1 TO V101%
+     INPUT ENET1,V102%
+     limotionType[liIdx]=V102%
+     PRINT #0, limotionType[liIdx]
+     PRINT ENET1,"35"
+     INPUT ENET1,V103%
+     liVel[liIdx]=V103%
+     PRINT ENET1,"39"
+     
+     INPUT ENET1,P[liIdx]
+     PRINT ENET1,"42" 
+     NEXT
+     FOR liIdx=1 TO V101%
+     IF 1=limotionType[liIdx] THEN 
+S1   MOVE P,P[liIdx],S=liVel[liIdx]%,A=7,T=1
+     ELSE
+S2   MOVE L,P[liIdx],S=liVel[liIdx]%,A=7,T=1
+     ENDIF
+     NEXT
+     ELSEIF V101%=-5 THEN
+     INPUT ENET1,V102%
+     PRINT ENET1,"received"
+     INPUT ENET1,V103%
+     PRINT ENET1,"received" 
+     DO[V102%]=V103%
+     
+     ELSEIF V101%=-1 THEN
+     INPUT ENET1,P1111
+     PRINT ENET1,"received"
+     'P1111=(300.0,200.0,0.0,0.0,0.0,0.0,&H0000)R
+     MKUCRD 2,P1111
+     SELUCRD 2
+S3   MOVE P,S=60%,A=7,T=1  (0.000,0.000,0.000,0.000,0.000,0.000,&H0208)U
+S4   MOVE P,S=60%,A=7,T=1  (-200.000,-200.000,300.000,0.000,0.000,0.000,&H0208)U
+S5   MOVE P,S=60%,A=7,T=1  (-200.000,200.000,300.000,0.000,0.000,0.000,&H0208)U
+S6   MOVE P,S=60%,A=7,T=1  (200.000,200.000,300.000,0.000,0.000,0.000,&H0208)U
+S7   MOVE P,S=60%,A=7,T=1  (200.000,-200.000,300.000,0.000,0.000,0.000,&H0208)U
+S8   MOVE P,S=60%,A=7,T=1  (-200.000,-200.000,300.000,0.000,0.000,0.000,&H0208)U
+S9   MOVE P,S=60%,A=7,T=1  (0.000,0.000,0.000,0.000,0.000,0.000,&H0208)U
+S10  MOVE P,S=60%,A=7,T=1  (0.000,84.349,8.041,0.000,-90.000,0.000)A
+     ENDIF
+     GOTO 20
+     END

@@ -1,0 +1,147 @@
+{
+  "schema_version": "seam_asset/v1",
+  "seam_name": "S3_complex_bottom",
+  "status": "review_needed",
+  "variant": "cad_edge_chain",
+  "geometry": {
+    "csv_path": "/mnt/c/Users/hanmech/Desktop/DTS_image/cad/seam_S3_complex_bottom.csv",
+    "units": "mm",
+    "point_count": 98,
+    "start_xyz_mm": [
+      1088.5754,
+      408.0,
+      -194.5573
+    ],
+    "end_xyz_mm": [
+      1241.9766,
+      408.0,
+      -194.5573
+    ],
+    "bbox_min_xyz_mm": [
+      1088.5754,
+      408.0,
+      -199.0
+    ],
+    "bbox_max_xyz_mm": [
+      1241.9766,
+      428.0,
+      -194.5573
+    ],
+    "bbox_size_xyz_mm": [
+      153.40120000000002,
+      20.0,
+      4.442700000000002
+    ],
+    "polyline_length_mm": 188.34907183855216,
+    "avg_step_mm": 1.9417430086448677,
+    "max_step_mm": 2.0,
+    "start_end_distance_mm": 153.40120000000002
+  },
+  "source": {
+    "kind": "cad_edge_chain",
+    "model_name": "P7375_P1000_EOP7S051_D_",
+    "model_format": "STEP",
+    "model_path": null,
+    "selection": {
+      "edge_chain": [
+        "Edge1060",
+        "Edge1088",
+        "Edge1086",
+        "Edge1092",
+        "Edge1093",
+        "Edge1098",
+        "Edge1099",
+        "Edge1104",
+        "Edge1122",
+        "Edge1123",
+        "Edge1127"
+      ]
+    }
+  },
+  "runtime_contract": {
+    "snap_strategy": "ref_pcd_no_snap",
+    "orientation_source": "runtime_from_ref_pcd_normals"
+  },
+  "validation": {
+    "captures_tested": [
+      "763",
+      "978"
+    ],
+    "metric_summary": {
+      "avg_mean_nn_mm": 1.6832087052638145,
+      "avg_p90_nn_mm": 2.1467539610944506,
+      "worst_max_nn_mm": 3.343110659507359,
+      "avg_centerline_p90_mm": 0.0,
+      "avg_tangent_p90_deg": 1.0305959579886636e-06,
+      "avg_corridor_inlier_ratio": 1.0,
+      "avg_endpoint_start_mm": 0.0,
+      "avg_endpoint_end_mm": 0.0,
+      "worst_contiguous_outlier_points": 0.0,
+      "corridor_pass": true
+    },
+    "per_capture_metrics": {
+      "763": {
+        "mean_nn_mm": 1.738538655011266,
+        "p90_nn_mm": 2.3137433557394305,
+        "max_nn_mm": 3.343110659507359,
+        "centerline_p90_mm": 0.0,
+        "tangent_p90_deg": 1.2074182697257333e-06,
+        "corridor_inlier_ratio": 1.0,
+        "endpoint_start_mm": 0.0,
+        "endpoint_end_mm": 0.0,
+        "max_contiguous_outlier_points": 0.0
+      },
+      "978": {
+        "mean_nn_mm": 1.6278787555163627,
+        "p90_nn_mm": 1.9797645664494703,
+        "max_nn_mm": 3.1159668637648865,
+        "centerline_p90_mm": 0.0,
+        "tangent_p90_deg": 8.537736462515939e-07,
+        "corridor_inlier_ratio": 1.0,
+        "endpoint_start_mm": 0.0,
+        "endpoint_end_mm": 0.0,
+        "max_contiguous_outlier_points": 0.0
+      }
+    },
+    "threshold_version": "seam_eval/v0_initial_2026-03-31",
+    "evaluated_at": "2026-04-06T13:47:00+09:00",
+    "source_commit": "f9a0b8773b0fd519c30f10b2f85eff4a6a8b76af",
+    "reviewed_by": "hanmech"
+  },
+  "decision": {
+    "promotion_reason": "shape_confirmed_on_ref_pcd_overlay_2026-04-07",
+    "promoted_from": null,
+    "decision_basis": {
+      "promotion_policy_version": "seam_promotion/v0_initial_2026-03-31",
+      "promotion_mode": "manual_review_with_recorded_evidence",
+      "promotion_criteria": {
+        "corridor_pass_all": true,
+        "worst_endpoint_lt_mm": 2.5,
+        "worst_contiguous_outlier_points_lte": 3
+      },
+      "required_captures": [
+        "763",
+        "978"
+      ],
+      "captures_compared": [
+        "763",
+        "978"
+      ],
+      "transfer_eval_json": "data/battery_case/transfer_eval_S3_complex_bottom_2026-04-06.json",
+      "selected_transfer_policy": "no_snap",
+      "preferred_over": [],
+      "metric_priority": [
+        "nn",
+        "centerline",
+        "tangent",
+        "corridor"
+      ]
+    }
+  },
+  "notes": [
+    "Complex bottom seam candidate with corner/transition sections",
+    "Constrained snap improved surface NN but broke nominal-seam corridor; no-snap retained only as a temporary transfer baseline",
+    "2026-04-07: CloudCompare overlay on ref PCD confirmed \u2014 shape acceptable, promoted to active with no_snap policy",
+    "mean NN 1.68mm \u2014 WARNING zone. Needs seam redefinition or snap policy change before production"
+  ]
+}

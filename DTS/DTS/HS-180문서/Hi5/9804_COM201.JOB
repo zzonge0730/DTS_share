@@ -1,0 +1,20 @@
+Program File Format Version : 1.6  MechType: 739(HH4-01)  TotalAxis: 6  AuxAxis: 0
+     'USAGE:9804_MMH_StartVIZ(1, P*)
+     '201, STRAT VIZ : POSE TYPE(ONLY 1=JPS)
+     LP1=P500
+     LP1.CFG.CRD=2
+     LV1$=STR$(LP1.J1)+","+STR$(LP1.J2)+","+STR$(LP1.J3)+","+STR$(LP1.J4)+","+STR$(LP1.J5)+","+STR$(LP1.J6)
+     LV2$="201"
+     V501$=LV2$+",1,"+LV1$
+     CALL 9823_MMH_SEND
+     'ANSWER
+     CALL 9824_MMH_RECV
+     IF V503$<>"201" THEN
+     PRINT #0, "ERROR : 201 CMD ERROR"
+     STOP
+     ENDIF
+     'IF V504$<>"2103" THEN
+     'PRINT #0, "ERROR : 201 IPC ERROR"
+     'STOP
+     'ENDIF
+     END

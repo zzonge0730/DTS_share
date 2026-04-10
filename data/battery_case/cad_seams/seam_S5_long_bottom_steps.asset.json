@@ -1,0 +1,139 @@
+{
+  "schema_version": "seam_asset/v1",
+  "seam_name": "S5_long_bottom_steps",
+  "status": "active",
+  "variant": "cad_edge_chain",
+  "geometry": {
+    "csv_path": "/mnt/c/Users/hanmech/Desktop/DTS_image/cad/seam_S5_long_bottom_steps.csv",
+    "units": "mm",
+    "point_count": 275,
+    "start_xyz_mm": [
+      1082.0985,
+      587.3291,
+      -194.6
+    ],
+    "end_xyz_mm": [
+      1595.4,
+      583.1398,
+      -199.0
+    ],
+    "bbox_min_xyz_mm": [
+      1082.0985,
+      583.1398,
+      -199.0
+    ],
+    "bbox_max_xyz_mm": [
+      1595.4,
+      587.3291,
+      -194.6
+    ],
+    "bbox_size_xyz_mm": [
+      513.3015,
+      4.189300000000003,
+      4.400000000000006
+    ],
+    "polyline_length_mm": 523.0287917226669,
+    "avg_step_mm": 1.9088642033673975,
+    "max_step_mm": 2.136218764546358,
+    "start_end_distance_mm": 513.3374524976139
+  },
+  "source": {
+    "kind": "cad_edge_chain",
+    "model_name": "P7375_P1000_EOP7S051_D_",
+    "model_format": "STEP",
+    "model_path": null,
+    "selection": {
+      "edge_chain": [
+        "Edge592",
+        "Edge594",
+        "Edge595",
+        "Edge449",
+        "Edge359",
+        "Edge358",
+        "Edge353",
+        "Edge362",
+        "Edge361",
+        "Edge448",
+        "Edge364",
+        "Edge363",
+        "Edge367",
+        "Edge372",
+        "Edge371",
+        "Edge447"
+      ]
+    }
+  },
+  "runtime_contract": {
+    "snap_strategy": "ref_pcd_no_snap",
+    "orientation_source": "runtime_from_ref_pcd_normals"
+  },
+  "validation": {
+    "captures_tested": [
+      "763",
+      "978"
+    ],
+    "metric_summary": {
+      "avg_mean_nn_mm": 0.5138592943162515,
+      "avg_p90_nn_mm": 1.0374302774811932,
+      "worst_max_nn_mm": 1.9115075196723437,
+      "avg_centerline_p90_mm": 0.0,
+      "avg_tangent_p90_deg": 6.037091348628667e-07,
+      "avg_corridor_inlier_ratio": 1.0,
+      "avg_endpoint_start_mm": 0.0,
+      "avg_endpoint_end_mm": 0.0,
+      "worst_contiguous_outlier_points": 0.0,
+      "corridor_pass": true
+    },
+    "per_capture_metrics": {
+      "763": {
+        "mean_nn_mm": 0.5441147188862793,
+        "p90_nn_mm": 1.0687001203729272,
+        "max_nn_mm": 1.8009474480356868,
+        "centerline_p90_mm": 0.0,
+        "tangent_p90_deg": 0.0,
+        "corridor_inlier_ratio": 1.0,
+        "endpoint_start_mm": 0.0,
+        "endpoint_end_mm": 0.0,
+        "max_contiguous_outlier_points": 0.0
+      },
+      "978": {
+        "mean_nn_mm": 0.48360386974622354,
+        "p90_nn_mm": 1.0061604345894595,
+        "max_nn_mm": 1.9115075196723437,
+        "centerline_p90_mm": 0.0,
+        "tangent_p90_deg": 0.0,
+        "corridor_inlier_ratio": 1.0,
+        "endpoint_start_mm": 0.0,
+        "endpoint_end_mm": 0.0,
+        "max_contiguous_outlier_points": 0.0
+      }
+    },
+    "threshold_version": "seam_eval/v0_initial_2026-03-31",
+    "evaluated_at": "2026-04-01T14:25:31+09:00",
+    "source_commit": "f9a0b8773b0fd519c30f10b2f85eff4a6a8b76af",
+    "reviewed_by": null
+  },
+  "decision": {
+    "promotion_reason": "candidate_nominal_transfer_baseline",
+    "promoted_from": null,
+    "decision_basis": {
+      "promotion_policy_version": "seam_promotion/v0_initial_2026-03-31",
+      "promotion_mode": "manual_review_with_recorded_evidence",
+      "promotion_criteria": {
+        "corridor_pass_all": true,
+        "worst_endpoint_lt_mm": 2.5,
+        "worst_contiguous_outlier_points_lte": 3
+      },
+      "required_captures": [
+        "763",
+        "978"
+      ],
+      "transfer_eval_json": "data/battery_case/transfer_eval_S5_long_bottom_steps_2026-04-01.json",
+      "selected_transfer_policy": "no_snap"
+    }
+  },
+  "notes": [
+    "S5 evaluated as nominal transfer seam",
+    "No-snap selected because it preserves nominal seam perfectly and already gives strong NN on 763/978"
+  ]
+}

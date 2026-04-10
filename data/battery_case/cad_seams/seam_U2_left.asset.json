@@ -1,0 +1,137 @@
+{
+  "schema_version": "seam_asset/v1",
+  "seam_name": "U2_left",
+  "status": "active",
+  "variant": "manual_override",
+  "geometry": {
+    "csv_path": "data/battery_case/cad_seams/seam_U2_left_override.csv",
+    "units": "mm",
+    "point_count": 12,
+    "start_xyz_mm": [
+      1241.611,
+      411.616,
+      -195.934
+    ],
+    "end_xyz_mm": [
+      1089.08,
+      409.787,
+      -197.691
+    ],
+    "bbox_min_xyz_mm": [
+      1089.08,
+      409.787,
+      -198.757
+    ],
+    "bbox_max_xyz_mm": [
+      1241.611,
+      438.673,
+      -192.044
+    ],
+    "bbox_size_xyz_mm": [
+      152.53100000000018,
+      28.886000000000024,
+      6.712999999999994
+    ],
+    "polyline_length_mm": 193.23686322366692,
+    "avg_step_mm": 17.5669875657879,
+    "max_step_mm": 36.35449779600874,
+    "start_end_distance_mm": 152.55208373208166
+  },
+  "source": {
+    "kind": "manual_polyline_override",
+    "model_name": "P7375_P1000_EOP7S051_D_",
+    "model_format": "STEP",
+    "model_path": null,
+    "selection": {
+      "edge_chain": []
+    }
+  },
+  "runtime_contract": {
+    "snap_strategy": "ref_pcd_constrained_snap_k5",
+    "orientation_source": "runtime_from_ref_pcd_normals"
+  },
+  "validation": {
+    "captures_tested": [
+      "763",
+      "978"
+    ],
+    "metric_summary": {
+      "avg_mean_nn_mm": 0.7930823469625053,
+      "avg_p90_nn_mm": 1.4143154519805585,
+      "worst_max_nn_mm": 2.3990760537437272,
+      "avg_centerline_p90_mm": 1.681089765776251,
+      "avg_tangent_p90_deg": 6.439239132298791,
+      "avg_corridor_inlier_ratio": 1.0,
+      "avg_endpoint_start_mm": 0.7638025186059533,
+      "avg_endpoint_end_mm": 0.45285002931545137,
+      "worst_contiguous_outlier_points": 0.0,
+      "corridor_pass": true
+    },
+    "per_capture_metrics": {
+      "763": {
+        "mean_nn_mm": 0.8663144572295463,
+        "p90_nn_mm": 1.3516802867368445,
+        "max_nn_mm": 2.3002090932709645,
+        "centerline_p90_mm": 1.681105363294076,
+        "tangent_p90_deg": 6.439009053529403,
+        "corridor_inlier_ratio": 1.0,
+        "endpoint_start_mm": 0.7638101738464029,
+        "endpoint_end_mm": 0.45285650331227256,
+        "max_contiguous_outlier_points": 0.0
+      },
+      "978": {
+        "mean_nn_mm": 0.7198502366954644,
+        "p90_nn_mm": 1.4769506172242728,
+        "max_nn_mm": 2.3990760537437272,
+        "centerline_p90_mm": 1.681074168258426,
+        "tangent_p90_deg": 6.43946921106818,
+        "corridor_inlier_ratio": 1.0,
+        "endpoint_start_mm": 0.7637948633655038,
+        "endpoint_end_mm": 0.45284355531863024,
+        "max_contiguous_outlier_points": 0.0
+      }
+    },
+    "threshold_version": "seam_eval/v0_initial_2026-03-31",
+    "evaluated_at": "2026-03-31T17:53:11+09:00",
+    "source_commit": "d5733e2c39dae4ed148ce217d1bf82107f0c16f8",
+    "reviewed_by": "hanmech"
+  },
+  "decision": {
+    "promotion_reason": "manual_override_selected_with_constrained_k5_transfer_policy",
+    "promoted_from": "cad_edge_chain",
+    "decision_basis": {
+      "promotion_policy_version": "seam_promotion/v0_initial_2026-03-31",
+      "promotion_mode": "manual_review_with_recorded_evidence",
+      "promotion_criteria": {
+        "corridor_pass_all": true,
+        "worst_endpoint_lt_mm": 2.5,
+        "worst_contiguous_outlier_points_lte": 3
+      },
+      "required_captures": [
+        "763",
+        "978"
+      ],
+      "captures_compared": [
+        "741",
+        "763",
+        "978"
+      ],
+      "transfer_eval_json": "data/battery_case/transfer_eval_U2_left_2026-03-31.json",
+      "selected_transfer_policy": "constrained_k5",
+      "preferred_over": [
+        "cad_edge_chain"
+      ],
+      "metric_priority": [
+        "nn",
+        "centerline",
+        "tangent",
+        "corridor"
+      ]
+    }
+  },
+  "notes": [
+    "U2 CAD edge chain underperformed on 741/763/978",
+    "Temporary active seam uses legacy polyline override",
+    "Constrained k=5 transfer policy selected because it improves NN while preserving nominal corridor on 763/978"
+  ]
+}

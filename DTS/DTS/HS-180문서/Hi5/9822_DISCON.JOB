@@ -1,0 +1,5 @@
+Program File Format Version : 1.6  MechType: 739(HH4-01)  TotalAxis: 6  AuxAxis: 0
+     '9822_MMH_CLOSE
+     'UDP DISCONNECT
+     ENET1.OPEN 0
+     END

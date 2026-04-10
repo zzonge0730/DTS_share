@@ -1,0 +1,60 @@
+Program File Format Version : 1.6  MechType: 389(HS180-02)  TotalAxis: 6  AuxAxis: 0
+     'Vision start
+     '==================================
+     'Initial setting
+     '==================================
+     DIM ltStatus, ltMsg, ltFin_Check, ltPose AS String
+     DIM liPose_num, liIdx_1, liIdx_2, liPose[6] AS Integer
+     *START
+     DELAY 0.1
+     ENET1.IP="192.168.10.101"
+     ENET1.RPORT=2000
+     ENET1.LPORT=2000
+     ENET1.OPEN 1
+     _TEINPUT=13
+     _TEINPUT=10
+     CLR_RBUF ENET1
+     IF ENET1.STATE<1 THEN *START
+     '==================================
+     'Ready receiver
+     '==================================
+     DELAY 0.2
+     PRINT ENET1,"READY"
+     DELAY 0.4
+     '==================================
+     *CHECK
+     INPUT ENET1, ltMsg, 10, *CHECK
+     ltFin_Check = MID$(ltMsg,1,6)
+     liPose_num = VAL(MID$(ltMsg,5,4))
+     IF ltFin_Check = "FINISH" THEN *MOVE
+     ltStatus = MID$(V1$,1,4)
+     IF ltStatus<>"1100" THEN *ERROR
+     '==================================
+     'Data parsing
+     '==================================
+     FOR liIdx_1 = 1 TO liPose_num
+     ltPose = MID$(ltMsg, 48 * liIdx_1 - 37, 47)
+     FOR liIdx_2 = 1 TO 6
+     liPose[liIdx_2] = VAL(MID$(ltPose, 8 * liIdx_2 - 7, 7))
+     NEXT
+     gpPoses[giTot_num] = (liPose[1], liPose[2], liPose[3], liPose[4], liPose[5], liPose[6])A 
+     giVel[giTot_num] = VAL(MID$(ltMsg, 11 + 48 * liPose_num + 13 * liIdx_1, 4))
+     giAcc[giTot_num] = VAL(ltMsg[11 + 48 * liPose_num + 13 * liIdx_1 + 5])
+     gtMT[giTot_num] = ltMsg[11 + 48 * liPose_num + 13 * liIdx_1 + 7]
+     gtDO[giTot_num] = MID$(ltMsg, 11 + 48 * liPose_num + 13 * liIdx_1 + 9, 2)
+     giTot_num = giTot_num + 1
+     NEXT
+     '==================================
+     DELAY 0.1
+     PRINT ENET1,"OK"
+     DELAY 0.1
+     GOTO *CHECK
+     '==================================
+     *MOVE
+     FOR liIdx_1 = 1 TO giTot_num
+S1   MOVE gtMT[liIdx_1], gpPoses[liIdx_1], S = giVel[liIdx_1], A = giAcc[liIdx_1], T=21
+     NEXT
+     '==================================
+     END
+     *ERROR
+     STOP

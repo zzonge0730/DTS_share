@@ -1,0 +1,23 @@
+Program File Format Version : 1.6  MechType: 739(HH4-01)  TotalAxis: 6  AuxAxis: 0
+     'USAGE:9812_MMH_RobotCal(1, P*), P*=Current Pose
+     '701,ROBOT CALLIBRATION
+     '_
+     LP1=P500
+     LP1.CFG.CRD=1
+     LV1$=STR$(LP1.X)+","+STR$(LP1.Y)+","+STR$(LP1.Z)+","+STR$(LP1.RX)+","+STR$(LP1.RY)+","+STR$(LP1.RZ)
+     LP1.CFG.CRD=2
+     LV2$=STR$(LP1.J1)+","+STR$(LP1.J2)+","+STR$(LP1.J3)+","+STR$(LP1.J4)+","+STR$(LP1.J5)+","+STR$(LP1.J6)
+     V501$="701,"+STR$(V508%)+","+LV1$+","+LV2$ '_
+     CALL 9823_MMH_SEND
+     '_
+     'ANSWER
+     CALL 9824_MMH_RECV
+     IF V503$<>"701" THEN
+     PRINT #0, "ERROR : 701 CMD ERROR"
+     STOP
+     ENDIF
+     'IF V504$<>"7101" AND V504$<>"7100" THEN
+     'PRINT #0, "ERROR : 701 IPC ERROR"
+     'STOP
+     'ENDIF
+     END

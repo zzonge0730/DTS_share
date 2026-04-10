@@ -1,0 +1,16 @@
+Program File Format Version : 1.6  MechType: 739(HH4-01)  TotalAxis: 6  AuxAxis: 0
+     'USAGE:9807_MMH_VIZindex(1, 1)
+     '204, VIZ SET INDEX : Index-move skill name, Index-Count
+     V501$="204"+","+STR$(V492%)+","+STR$(V493%)
+     CALL 9823_MMH_SEND
+     'ANSER
+     CALL 9824_MMH_RECV
+     IF V503$<>"204" THEN
+     PRINT #0, "ERROR : 204 CMD ERROR"
+     STOP
+     ENDIF
+     'IF V504$<>"2106" THEN
+     'PRINT #0, "ERROR : 204 IPC ERROR"
+     'STOP
+     'ENDIF
+     END

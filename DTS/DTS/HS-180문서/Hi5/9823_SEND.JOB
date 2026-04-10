@@ -1,0 +1,9 @@
+Program File Format Version : 1.6  MechType: 739(HH4-01)  TotalAxis: 6  AuxAxis: 0
+     '9823_MMH_SEND
+     'SEND STRING
+     _TEINPUT=13
+     _TEINPUT=10
+     V501$=V501$+","
+     PRINT #0,V501$
+     PRINT ENET1,V501$
+     END

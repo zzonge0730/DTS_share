@@ -1,0 +1,43 @@
+Program File Format Version : 1.6  MechType: 739(HH4-01)  TotalAxis: 6  AuxAxis: 0
+     'USAGE:9808_MMH_VIZpath(1)
+     '205, GET VIZ PATH:Return Pose Type 1=JPS, 2=TCP
+     V501$="205"+","+STR$(V505%)
+     *SEND205
+     CALL 9823_MMH_SEND
+     'ANSER
+     CALL 9824_MMH_RECV
+     IF V503$<>"205" THEN
+     PRINT #0, "ERROR : 205 CMD ERROR"
+     STOP
+     ENDIF
+     IF (V504$="2100") AND (V505$<>"0") THEN
+     IF V505% = 2 THEN
+     FOR LV1%=1 TO VAL(V506$)
+     LV2%=LV1%-1
+     V![500+LV2%*14]=VAL(V$[508+LV2%*8])
+     V![501+LV2%*14]=VAL(V$[509+LV2%*8])
+     V![502+LV2%*14]=VAL(V$[510+LV2%*8])
+     V![503+LV2%*14]=VAL(V$[511+LV2%*8])
+     V![504+LV2%*14]=VAL(V$[512+LV2%*8])
+     V![505+LV2%*14]=VAL(V$[513+LV2%*8])
+     V![506+LV2%*14]=VAL(V$[514+LV2%*8])
+     V![507+LV2%*14]=VAL(V$[515+LV2%*8])
+     NEXT
+     ELSE
+     FOR LV1%=1 TO VAL(V506$)
+     LV2%=LV1%-1
+     V![508+LV2%*14]=VAL(V$[508+LV2%*8])
+     V![509+LV2%*14]=VAL(V$[509+LV2%*8])
+     V![510+LV2%*14]=VAL(V$[510+LV2%*8])
+     V![511+LV2%*14]=VAL(V$[511+LV2%*8])
+     V![512+LV2%*14]=VAL(V$[512+LV2%*8])
+     V![513+LV2%*14]=VAL(V$[513+LV2%*8])
+     V![506+LV2%*14]=VAL(V$[514+LV2%*8])
+     V![507+LV2%*14]=VAL(V$[515+LV2%*8])
+     NEXT
+     ENDIF
+     'ELSE
+     'PRINT #0,"ERROR : 205 IPC ERROR"
+     'STOP
+     'ENDIF
+     END

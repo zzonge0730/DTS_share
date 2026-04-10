@@ -1,0 +1,17 @@
+Program File Format Version : 1.6  MechType: 739(HH4-01)  TotalAxis: 6  AuxAxis: 0
+     'USAGE:9803_MMH_ChangeVIS(1,1)
+     '103, CHANGE VISION RECIPE
+     LV1$="103"
+     V501$=LV1$+","+STR$(V503%)+","+STR$(V506%)
+     CALL 9823_MMH_SEND
+     'ANSER
+     CALL 9824_MMH_RECV
+     IF V503$<>"103" THEN
+     PRINT #0, "ERROR : 103 CMD ERROR"
+     STOP
+     ENDIF
+     'IF V504$<>"1107" THEN
+     'PRINT #0, "ERROR : 103 IPC ERROR"
+     'STOP
+     'ENDIF
+     END

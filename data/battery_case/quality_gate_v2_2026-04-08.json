@@ -1,0 +1,36 @@
+{
+  "version": "quality_gate/v2_2026-04-08",
+  "description": "Quality gate v2 — fitness threshold tightened based on seam-local refinement baseline (12 captures, all refinement=True)",
+  "block": {
+    "description": "Robot transmission blocked — any one condition triggers BLOCK",
+    "icp_fitness_lt": 0.50,
+    "icp_rmse_gt_mm": 2.0,
+    "seam_mean_nn_gt_mm": 2.0,
+    "worst_max_nn_gt_mm": 5.0
+  },
+  "warning": {
+    "description": "Warning raised but transmission allowed — operator review recommended",
+    "icp_fitness_lt": 0.55,
+    "icp_rmse_gt_mm": 1.5,
+    "seam_mean_nn_gt_mm": 1.0,
+    "worst_max_nn_gt_mm": 3.0,
+    "corridor_inlier_lt": 0.90
+  },
+  "data_basis": {
+    "normal_captures_count": 12,
+    "normal_fitness_range": [0.554, 0.571],
+    "normal_rmse_range_mm": [0.953, 0.964],
+    "normal_seam_mean_range_mm": [0.448, 0.977],
+    "normal_worst_max_range_mm": [1.177, 3.854],
+    "repeatability_seam_mean_std_mm": 0.009,
+    "all_refinement_applied": true,
+    "failed_captures": ["REG_R (FOV clipping, fitness=0.466)", "45deg block (ICP fail, fitness=0.0)"],
+    "reference_condition": "75deg + HDR On + Ambient Off",
+    "changes_from_v1": [
+      "BLOCK fitness: 0.3 -> 0.50 (refinement baseline lower bound - 10%)",
+      "WARNING fitness: added 0.55 (refinement baseline lower bound)",
+      "WARNING RMSE: added 1.5mm (between cluster A 0.96mm and cluster B 1.57mm)",
+      "Pre-refinement captures (fitness 0.86-0.96) excluded from normal range"
+    ]
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "camera_ip": "169.254.97.113",
+  "captures_dir": "/mnt/c/Users/hanmech/Desktop/DTS_image/captures",
+  "default_capture_tag": "gui",
+  "save_rgb": true,
+  "save_depth": true,
+  "save_textured_point_cloud": true
+}

@@ -1,0 +1,13 @@
+Program File Format Version : 1.6  MechType: 739(HH4-01)  TotalAxis: 6  AuxAxis: 0
+     REM ROBOT Calibration sample
+     '_
+     '_
+     V500$="192.168.1.10"
+     V500%=8000
+     V501%=1
+     CALL 9821_MMH_OPEN
+     DELAY 1.0
+     '_
+     
+     '_
+     END

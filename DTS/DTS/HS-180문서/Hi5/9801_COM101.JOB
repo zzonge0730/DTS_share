@@ -1,0 +1,28 @@
+Program File Format Version : 1.6  MechType: 739(HH4-01)  TotalAxis: 6  AuxAxis: 0
+     '9801_MMH_VIStrig(1, 1, 1, P*)
+     '101, VISION TRIGGER,
+     LP1=P500
+     IF V505%=2 THEN
+     LP1.CFG.CRD=1
+     LV1$=STR$(LP1.X)+","+STR$(LP1.Y)+","+STR$(LP1.Z)+","+STR$(LP1.RX)+","+STR$(LP1.RY)+","+STR$(LP1.RZ)
+     ELSE
+     LP1.CFG.CRD=2
+     LV1$=STR$(LP1.J1)+","+STR$(LP1.J2)+","+STR$(LP1.J3)+","+STR$(LP1.J4)+","+STR$(LP1.J5)+","+STR$(LP1.J6)
+     ENDIF
+     LV2$="101"
+     V501$=LV2$+","+STR$(V503%)+","+STR$(V504%)+","+STR$(V505%)+","+LV1$ '_
+     '_
+     CALL 9823_MMH_SEND
+     'ANSWER
+     CALL 9824_MMH_RECV
+     IF (V503$ <> "101") THEN
+     PRINT #0,"ERROR : CMD ERROR"
+     STOP
+     ENDIF
+     REM _
+     'IF (V504$ <> "1102") THEN
+     'PRINT #0,"ERROR : IPC ERROR"
+     'STOP
+     'ENDIF
+     REM _
+     END

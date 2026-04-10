@@ -1,0 +1,16 @@
+# DTS core dependencies
+numpy>=1.26
+open3d>=0.18.0
+
+# GUI (battery_case_gui.py)
+Pillow>=10.0
+
+# Visualization scripts (optional — not needed for core pipeline)
+matplotlib>=3.8
+
+# Mech-Eye camera capture (optional — only needed with physical camera)
+# MechEyeAPI is installed via Mech-Eye SDK installer, not pip.
+# See: https://docs.mech-mind.net/en/eye-sdk/2.5.4/
+
+# tkinter is required for GUI but ships with Python on most platforms.
+# On Ubuntu/Debian: sudo apt install python3-tk

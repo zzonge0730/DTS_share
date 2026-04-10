@@ -1,0 +1,76 @@
+{
+  "battery_case_capture_registry_version": "2026-03-18",
+  "reference_pcd": "/mnt/c/Users/hanmech/Desktop/DTS_image/pipeline/ref_battery_case.ply",
+  "captures": {
+    "473": {
+      "label": "473 · Raw 90° (비권장)",
+      "raw_capture_ply": "/mnt/c/Users/hanmech/Desktop/DTS_image/captures/20260316_473/point_cloud_20260316_152642_473.ply",
+      "roi_or_eval_pcd": "/mnt/c/Users/hanmech/Desktop/DTS_image/pipeline/meas_473_tight.ply",
+      "icp_transform_npy": "/mnt/c/Users/hanmech/Desktop/DTS_image/pipeline/icp_transform_473.npy",
+      "canonical_nn_evaluation_cloud": "raw_capture_ply",
+      "notes": [
+        "90-degree clean capture",
+        "Cross-validation on raw capture: U1 mean NN=5.804mm, U2 mean NN=7.748mm",
+        "Interpret as a non-recommended setup example rather than the main pipeline baseline",
+        "Likely degraded by 90-degree viewpoint and near-raw / HDR-off capture condition"
+      ]
+    },
+    "741": {
+      "label": "741 · Reflective 30°",
+      "raw_capture_ply": "/mnt/c/Users/hanmech/Desktop/DTS_image/captures/point_cloud_20260317_133734_741.ply",
+      "roi_or_eval_pcd": null,
+      "icp_transform_npy": "/mnt/c/Users/hanmech/Desktop/DTS_image/pipeline/icp_transform_741.npy",
+      "canonical_nn_evaluation_cloud": "raw_capture_ply",
+      "notes": [
+        "Reflective mode capture",
+        "Cross-validation on raw capture: U1 mean NN=1.072mm, U2 mean NN=1.059mm",
+        "No canonical ROI/eval cloud saved in repo-side registry yet"
+      ]
+    },
+    "763": {
+      "label": "763 · Clean 30°",
+      "raw_capture_ply": "/mnt/c/Users/hanmech/Desktop/DTS_image/captures/20260316_763/point_cloud_20260316_142616_763.ply",
+      "roi_or_eval_pcd": "/mnt/c/Users/hanmech/Desktop/DTS_image/pipeline/meas_763_roi.ply",
+      "icp_transform_npy": "/mnt/c/Users/hanmech/Desktop/DTS_image/pipeline/icp_transform_763.npy",
+      "canonical_nn_evaluation_cloud": "raw_capture_ply",
+      "notes": [
+        "30-degree clean capture",
+        "Cross-validation on raw capture: U1 mean NN=1.070mm, U2 mean NN=0.853mm",
+        "Inside the currently recommended operating window"
+      ]
+    },
+    "978": {
+      "label": "978 · HDR 30° (기준)",
+      "raw_capture_ply": "/mnt/c/Users/hanmech/Desktop/DTS_image/captures/point_cloud_20260317_134008_978.ply",
+      "roi_or_eval_pcd": null,
+      "icp_transform_npy": "/mnt/c/Users/hanmech/Desktop/DTS_image/pipeline/icp_transform_978.npy",
+      "canonical_nn_evaluation_cloud": "raw_capture_ply",
+      "notes": [
+        "HDR-only baseline capture",
+        "Cross-validation on raw capture: U1 mean NN=0.599mm, U2 mean NN=0.697mm",
+        "Do not pair icp_transform_978.npy with meas_battery_roi.ply or meas_battery_tight.ply for NN evaluation",
+        "Inside the currently recommended operating window"
+      ]
+    }
+  },
+  "contamination_judgment": {
+    "status": "no_immediate_result_invalidating_contamination_found",
+    "scope": "battery-case U1/U2 under recommended 30-degree-class captures",
+    "remaining_biases": [
+      "Seam seeds originated from meas978 before ref-surface snapping",
+      "Each capture is still evaluated with its own ICP transform"
+    ]
+  },
+  "known_noncanonical_files": {
+    "meas_battery_roi_ply": {
+      "path": "/mnt/c/Users/hanmech/Desktop/DTS_image/pipeline/meas_battery_roi.ply",
+      "status": "noncanonical_for_978",
+      "reason": "Using this with icp_transform_978.npy reproduces meaningless NN scores around 120-148mm"
+    },
+    "meas_battery_tight_ply": {
+      "path": "/mnt/c/Users/hanmech/Desktop/DTS_image/pipeline/meas_battery_tight.ply",
+      "status": "noncanonical_for_978",
+      "reason": "Using this with icp_transform_978.npy reproduces meaningless NN scores around 145-148mm"
+    }
+  }
+}
