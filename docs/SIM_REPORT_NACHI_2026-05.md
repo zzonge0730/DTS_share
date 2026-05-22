@@ -26,19 +26,19 @@
 ### 목적
 본사 NACHI MZ07L 실로봇에 실제로 경로를 전달하기 전, 로컬 환경에서 시뮬레이션 도구를 통해 다음 항목을 사전 확인한다.
 
-- 카메라-로봇 좌표 변환 후 robot frame 경로의 작업 공간 적합성
-- 시뮬레이션 도구가 제공하는 IK 계산, 충돌 검사, 도달성 판정 결과
+- 카메라-로봇 좌표 변환 후 로봇 좌표계 경로의 작업 공간 적합성
+- 시뮬레이션 도구가 제공하는 역기구학 계산(IK, 로봇 관절 각도 역산), 충돌 검사, 도달성 판정 결과
 - 시뮬레이션 도구와 자체 코드(Python 어댑터, C# DTS) 간 통신 흐름의 정상 동작
 - 본사 방문 시 즉시 실행 가능한 형태로 검증 절차 및 자료 정비
 
 ### 범위
 - 검증 대상: NACHI MZ07L 모델, MZ07L 라이브러리(`nachi_mz07l_01`) 기반 시뮬레이션 도구 환경
-- 입력 데이터: 사전 실행 전용 robot-frame 축소 경로 (5개 지점) — 실로봇 송신 금지
-- 제외 사항: 실로봇 통신, Hand-Eye Calibration 측정값 적용, 현장 안전 절차 검증
+- 입력 데이터: 사전 실행 전용 로봇 좌표계 기준 축소 경로 (5개 지점) — 실로봇 송신 금지
+- 제외 사항: 실로봇 통신, 카메라-로봇 좌표 보정 측정(Hand-Eye Calibration) 적용, 현장 안전 절차 검증
 
 ### 적용 한계
 - 현재 `T_robot_camera`는 임시 변환(z 축 -900mm)만 적용. 본사 현장에서 실측 후 교체 필요.
-- 시뮬레이션 결과는 IK·충돌·통신 흐름 사전 점검 목적에 한정. 실로봇 동작 100% 보장이 아님.
+- 시뮬레이션 결과는 역기구학·충돌·통신 흐름 사전 점검 목적에 한정. 실로봇 동작 100% 보장이 아님.
 
 ---
 
@@ -50,15 +50,15 @@
 
 ### 작업본
 - 위치: `C:\Users\hanmech\Desktop\DTS_image\MZ07L-dryrun\`
-- 원본 보존: `Mech-Viz-dCNwPT/` (수정 금지)
+- 원본 프로젝트 폴더는 별도 보존 (수정 금지)
 - 폴더명과 `.viz` 파일명 일치 필요 (시뮬레이션 도구 프로젝트 인식 조건)
 
 ### 입력 데이터
-- 사전 실행 전용 robot-frame 경로:
+- 사전 실행 전용 로봇 좌표계 경로:
   - `data/battery_case/field_test/mechviz_dryrun_robot_frame/U1_right_phase3_first5_sim_robot_frame_pose.csv`
   - `data/battery_case/field_test/mechviz_dryrun_robot_frame/U2_left_phase3_first5_sim_robot_frame_pose.csv`
   - `data/battery_case/field_test/mechviz_dryrun_robot_frame/S5_long_bottom_steps_phase3_first5_sim_robot_frame_pose.csv`
-- 원본(camera-frame): `data/battery_case/field_test/phase3_poses/*_phase3_first5_pose.csv`
+- 원본(카메라 좌표계): `data/battery_case/field_test/phase3_poses/*_phase3_first5_pose.csv`
 - 변환 방식: `(x, y, z) → (x, y, z − 900mm)`, 자세값 유지
 
 ### 실행 설정
@@ -67,7 +67,7 @@
 
 ### C# DTS 측 설정
 - `ROBOT_DELIVERY_MODE = mechviz_nachi` (실로봇 직접 송신 차단)
-- 차단 검증 방법: 모의 로봇 수신측에서 1100 UDP 패킷 수신 0건 확인 + DTS 콘솔 `[SendGuard] Blocked` 로그 확인 (이중 증명)
+- 차단 검증 방법: 모의 로봇 수신측에서 1100 UDP 패킷 수신 0건 확인 + DTS 콘솔 송신 차단 사유 로그(`[SendGuard] Blocked`) 확인 (이중 증명)
 
 ---
 
@@ -77,14 +77,14 @@
 | 단계 | 내용 | 본 보고 적용 |
 |---|---|---|
 | Phase 0 | 환경 구성 (작업본 오픈, 모델 적용, 입력 데이터 준비) | 포함 |
-| Phase 1 | 통신 흐름 검증 (서비스 등록, hub trigger, 경로 외부 전달 단계 진입) | 포함 |
-| Phase 2 | 사전 실행 (workspace sanity → IK → 충돌 → 순차 전달) | 포함 |
+| Phase 1 | 통신 흐름 검증 (서비스 등록, 통신 허브 트리거, 경로 외부 전달 단계 진입) | 포함 |
+| Phase 2 | 사전 실행 (사전 검사 → 역기구학 → 충돌 → 순차 전달) | 포함 |
 | Phase 3 | 실로봇 수동 도달 확인 | 미포함 (현장 의존) |
 | Phase 4 | 실로봇 저속 자동 실행 | 미포함 (현장 의존) |
 
 ### 사전 실행 데이터 생성
-- 원본 phase3 first5 경로(camera frame) 활용
-- 임시 변환(z−900mm)으로 robot-frame 근사 — 실측 `T_robot_camera` 적용 전까지 사용
+- 원본 phase3 first5 경로(카메라 좌표계) 활용
+- 임시 변환(z−900mm)으로 로봇 좌표계 근사 — 실측 `T_robot_camera` 적용 전까지 사용
 
 ### 판정 기준
 - **Workspace sanity** (`scripts/check_mz07l_workspace.py`): 좌표 형식, 작업 공간, 도달 범위(912 mm, MZ07LM 카탈로그 `MMZEN-327-001` 기준), 인접 지점 간 변동량
@@ -126,10 +126,10 @@ mechviz_dryrun=PARTIAL delivered=1/5 reason=delivered_1_of_5
 ```
 
 확인된 정상 동작:
-- 서비스 등록 및 hub 등록
-- 시뮬레이션 도구 프로젝트 open 명령
+- 서비스 등록 및 통신 허브 등록
+- 시뮬레이션 도구 프로젝트 열기 명령
 - 경로 외부 전달 단계 진입
-- 첫 지점 전달 (`getMoveTargets` 1회 호출)
+- 첫 지점 전달 (어댑터 측 경로 전달 함수 `getMoveTargets` 1회 호출 확인)
 
 미확인 항목:
 - 전체 5개 지점 순차 전달 완료 여부
@@ -174,19 +174,19 @@ Waypoint: (1.27194, -0.471724, 0.312822) → unreachable
 
 ### 시뮬레이션 흐름
 - 사전 실행 흐름 내부의 반복 실행 연결 구성(self-loop) 유무 확인 — 5/22 진행 중
-- 첫 지점 이후 경로 계산(plan) 또는 관절 해석(IK) 단계 중단 가능성 — self-loop 보완 후에도 미해소 시 후속 점검 필요
+- 첫 지점 이후 경로 계획 또는 역기구학 계산 단계 중단 가능성 — self-loop 보완 후에도 미해소 시 후속 점검 필요
 
-### 후속 점검 절차 (self-loop 보완 후 PARTIAL 유지 시)
-1. **시뮬레이션 도구 로그 수준 상향** — Mech-Viz 로그 레벨을 DEBUG로 변경, External Move step 호출 추적 메시지 활성화
-2. **Step 트리거 추적** — `viz_outer_move_service.py` 콘솔 로그에서 `getMoveTargets` 호출 회수와 직전 호출 종료 코드 확인
-3. **Adapter 측 호출 누락 점검** — Mech-Viz가 첫 지점 이후 다시 `getMoveTargets`를 호출하지 않는지, 호출은 하지만 응답이 끊기는지 구분
-4. **Mech-Viz 화면 상태 메시지 확인** — IK 실패·충돌·도달 불가 등 step 자체 오류 메시지 유무
-5. **판정**: 위 1~4 결과로 원인 범주 결정 — (a) 시뮬레이션 도구 측 step 흐름 / (b) adapter ↔ 시뮬레이션 도구 통신 / (c) IK·plan 단계 내부 실패
+### 후속 점검 절차 (self-loop 보완 후 부분 완료 상태 유지 시)
+1. **시뮬레이션 도구 로그 수준 상향** — 시뮬레이션 도구 로그 레벨을 DEBUG로 변경, 경로 외부 전달 단계 호출 추적 메시지 활성화
+2. **단계 트리거 추적** — 어댑터 서비스 콘솔 로그에서 경로 전달 함수(`getMoveTargets`) 호출 회수와 직전 호출 종료 코드 확인
+3. **어댑터 측 호출 누락 점검** — 시뮬레이션 도구가 첫 지점 이후 다시 경로 전달 함수를 호출하지 않는지, 호출은 하지만 응답이 끊기는지 구분
+4. **시뮬레이션 도구 화면 상태 메시지 확인** — 역기구학 실패·충돌·도달 불가 등 단계 자체 오류 메시지 유무
+5. **판정**: 위 1~4 결과로 원인 범주 결정 — (a) 시뮬레이션 도구 측 단계 흐름 / (b) 어댑터 ↔ 시뮬레이션 도구 통신 / (c) 역기구학·경로 계획 단계 내부 실패
 
 ### 현장 측정 필요 항목 (본사 방문 시 처리)
 - 카메라-로봇 좌표 변환 행렬(`T_robot_camera`) 실측 — 현재 임시 변환 적용 중
 - 로봇 컨트롤러 IP, PC 할당 IP
-- TCP 등록값, 사용자 좌표계 정의
+- 툴 중심점(TCP) 등록값, 사용자 좌표계 정의
 - 안전 속도 합의값, 비상 정지 절차, 용접 토치 차단 절차
 
 ### 일정 종속 항목
@@ -214,12 +214,12 @@ Waypoint: (1.27194, -0.471724, 0.312822) → unreachable
 - 로컬 재현 기준 검증 절차 점검 — 현장 의존 없이 패키지만으로 사전 검증 절차 재현 가능 여부 확인
 
 ### 중기 (6월, M4 진입 준비)
-- 시뮬레이션 환경 정교화 — 셀 구성(지그, 작업 테이블, 주변 장애물), TCP 오프셋 정밀화
+- 시뮬레이션 환경 정교화 — 셀 구성(지그, 작업 테이블, 주변 장애물), 툴 중심점(TCP) 오프셋 정밀화
 - 반복 측정 환경 구성 — 정합 결과 안정성 검증을 위한 5회 반복 측정 절차
 - 정합 한계 부위 CAD 기준선 재정의 — 자세 오차가 한계 수준에 근접한 부위 원인 규명
 
 ### 본사 방문 일정 확정 시
-- Hand-Eye Calibration 측정 후 `T_robot_camera` 적용
+- 카메라-로봇 좌표 보정 측정(Hand-Eye Calibration) 후 `T_robot_camera` 적용
 - Phase 3 수동 도달 확인 (수동 이동 검증용 경로 사용)
 - Phase 4 저속 자동 실행 (사전 실행 결과 동일 부위, first5 경로)
 - 전체 경로 1회 실행은 수동·저속 자동 검증 완료 후 별도 합의 단계로 진행
