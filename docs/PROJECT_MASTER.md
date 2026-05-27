@@ -15,7 +15,7 @@
 | 구분 | 설명 | 담당 | 비고 |
 |------|------|------|------|
 | **A. 경로 생성** (제품 핵심) | 용접선(seam) 정의/추출, 균일 리샘플링, 자세 생성, 실물 보정 | Python CAD/PCD 파이프라인 (`FINAL_PJT/`, `gab.py`) | 회사의 제품 경쟁력. 이것이 메인 |
-| **B. 안전 실행** (실행 기반) | 통신(1100 프로토콜), 상태머신, StopLatch, Gap 판정, 전송 차단/허용 | DTS (C#) + Adapter | A를 현장에서 안전하게 돌리기 위한 기반 |
+| **B. 안전 실행** (실행 기반) | 통신(legacy 1100 UDP), 상태머신, StopLatch, Gap 판정, 전송 차단/허용 | DTS (C#) + Adapter | A를 현장에서 안전하게 돌리기 위한 기반. NACHI MZ07L 실로봇 경로는 Mech-Viz 경유로 전환 중 |
 
 - 2월까지의 작업은 **B(안전 실행 기반)**을 확보한 것이다. 이 덕분에 A의 결과를 넣자마자 바로 안전하게 검증할 수 있는 하네스가 갖춰져 있다.
 - **3월부터는 A(경로 생성)가 메인 개발 축**이 된다.
@@ -27,13 +27,13 @@
 | 레이어 | 기술 | 역할 |
 |--------|------|------|
 | **(A) Python 알고리즘 + Adapter** | Python | CAD/PCD 정합, ICP, Gap 측정, 경로 생성, 프로토콜 정규화(Mech → 1100), Quat→Euler 변환 |
-| **(B) DTS (C# WinForms)** | C# .NET 4.8 | Vision TCP 수신 → Gap JSON 판정(OK/NG/STALE) → Robot UDP 전송, 상태머신/StopLatch/안전 제어 |
-| **(C) Robot** | JOB | READY 송신, 1100 포즈 수신, MOVE L 실행 |
+| **(B) DTS (C# WinForms)** | C# .NET 4.8 | Vision TCP 수신 → Gap JSON 판정(OK/NG/STALE) → legacy Robot UDP 전송, 상태머신/StopLatch/안전 제어 |
+| **(C) Robot / Mech-Viz** | JOB / Mech-Mind | 기존 mock/HS-180 경로: 1100 포즈 수신. NACHI MZ07L 경로: Mech-Viz IK/충돌검사 → 공식 Nachi adapter → MOVEX-J |
 
 ### 2.2 역할 분담
 
 - **Python CAD/PCD 파이프라인** (A — 제품 핵심): seam 추출, 균일 리샘플링, 자세 생성, ICP 정합/Gap 측정, Rigid 보정
-- **DTS (C#)** (B — 안전 실행): Vision TCP ↔ Robot UDP 중계, 상태머신, StopLatch, Gap JSON 기반 전송 차단/허용
+- **DTS (C#)** (B — 안전 실행): Vision TCP ↔ legacy Robot UDP 중계, 상태머신, StopLatch, Gap JSON 기반 전송 차단/허용. NACHI MZ07L에서는 `ROBOT_DELIVERY_MODE` 토글로 기존 UDP 직접 송신과 Mech-Viz 경유 모드를 분리
 - **Adapter** (B): 외부 시스템 응답을 DTS 계약 포맷(`1100,<cnt>,x,y,z,rx,ry,rz,...`)으로 변환, Quat→Euler 변환
 - **Mech-Mind 제품군** (외부, 단계적 대체 대상):
   - **Mech-Eye API**: 카메라 SDK — 3D 포인트클라우드/Depth 취득
@@ -43,7 +43,11 @@
 ### 2.3 데이터 흐름
 
 ```
+Legacy/mock 경로:
 Robot READY → DTS → Adapter → Mech(101/102) → Adapter(정규화) → DTS(Gap 판정) → Robot(UDP 전송)
+
+NACHI MZ07L 목표 경로:
+DTS Python pose.csv → Workspace sanity gate → Mech-Viz(IK/충돌/Joint 변환) → Mech-Mind 공식 Nachi adapter → MZ07L(MOVEX-J)
 ```
 
 상태코드는 별도 UDP 포트(기본 2002)로 전송:
@@ -51,7 +55,7 @@ Robot READY → DTS → Adapter → Mech(101/102) → Adapter(정규화) → DTS
 - `2002,<reason>,...` : NG/차단(StopLatch)
 - `1004,<reason>,...` : 결과 없음/입력 불가
 
-## 3. 현재 상태 (2026-04-07 기준)
+## 3. 현재 상태 (2026-05-27 기준)
 
 ### 3.1 완료 항목
 
@@ -59,9 +63,10 @@ Robot READY → DTS → Adapter → Mech(101/102) → Adapter(정규화) → DTS
 - Adapter 최소 구현 완료 (`READY → 101/102 → 1100` 변환)
 - Quaternion→Euler 변환 (`quat_to_euler`, stride=7 자동 감지)
 - Gap 실측 JSON 연동 (더미 제거), Mech 응답 이상 시 fail-safe
-- ICP 품질 게이트 (`ICP_QUALITY_ENFORCE`, `ICP_FITNESS_MIN=0.3`, `ICP_INLIER_RMSE_MAX=1.5`)
+- ICP 품질 게이트 (`ICP_QUALITY_ENFORCE`, quality_gate_v2: BLOCK fitness<0.50, WARNING fitness<0.55). fitness는 파이프라인 설정 종속 상대 지표이므로 seam NN/RMSE/corridor와 함께 판단. 현재 임계값은 12-capture baseline 기반 운영 초기값이며 향후 재보정 대상
 - C# fail-closed 강화 — Config 검증, StopLatch 가드, pose bounds ±5000mm
 - C# 빌드 환경 복구 완료
+- 범위 정정(2026-05): 위 통신 완료 범위는 **mock/legacy 1100 UDP 경로** 기준이다. 본사 NACHI MZ07L 실로봇 통신은 Mech-Viz 공식 Nachi adapter 경유로 전환 중이며, C# `ROBOT_DELIVERY_MODE` 토글과 Windows mock 검증은 완료했다. 실기 통신 검증은 본사 방문 일정 확정 후 진행한다.
 
 **경로 자동 생성 파이프라인 (A) — 3월 완료**
 - Battery-case seam 파이프라인 (`battery_seam_pipeline.py`): seam 정의 → surface snap → local normal → Euler ZYX pose → 1100 format
@@ -89,6 +94,12 @@ Robot READY → DTS → Adapter → Mech(101/102) → Adapter(정규화) → DTS
 - 473 (90° raw): U1=5.804mm, U2=7.748mm — out-of-window
 - 데이터 오염 검토 완료: capture-conditioned bias 문서화, MVP/데모용 수용 가능 판정
 
+**정합 사전 차단 + 자동 진단 — 4월 완료**
+- `alignment_precheck()`: ICP 전 4단계 early-exit 차단 (raw point count → ROI count/ratio → bbox sanity → seed-aware coarse overlap). 실패 캡처는 ICP를 건너뜀
+- `diagnose_alignment()`: ICP 후 결과를 자동 분류 (GOOD / ACCEPTABLE / LOW_OVERLAP / SEED_UNSTABLE / CORRIDOR_FAIL / NN_WARNING / REFINEMENT_REJECTED). seam metrics 없는 경우 graceful handling
+- Diagnosis spot-check: 45° fail → `precheck_failed` (ROI 849 < 5000), REG_R → `LOW_OVERLAP` + `NN_WARNING` (fitness 0.466), 978 → `GOOD` (fitness 0.570)
+- Report JSON에 `status` / `precheck` / `diagnosis` 필드 추가, GUI에서 한 줄 원인 표시
+
 **Capture Condition / Transfer Policy — 4월 반영**
 - historical `30°` baseline은 실측 기준으로 약 `75°` class로 재정의
 - `45°` 블록은 현재 setup에서 ICP fail / out-of-window로 기록
@@ -107,18 +118,43 @@ Robot READY → DTS → Adapter → Mech(101/102) → Adapter(정규화) → DTS
   - `S5_long_bottom_steps` → `no_snap`
   - `S3_complex_bottom` → overlay review 후 `review_needed`
 
+**Batch 검증 — 4월 완료**
+- 21개 캡처 일괄 진단: GOOD 17건, ACCEPTABLE 4건, BLOCK/FAIL 0건
+- ACCEPTABLE 4건(361, 703, 806, codex)은 전부 refinement 도입 전후 과도기 샘플. 공통 코드: `NN_WARNING` + `REFINEMENT_REJECTED`. refinement가 시도되었지만 holdout 개선이 없어 미적용된 것이며, 캡처 자체의 품질 문제가 아님
+- 21개 캡처는 3개 클러스터로 분류:
+  - **A. NEW (refined)** 13건: 현재 운영 기준 파이프라인. seam-local refinement 적용, seam NN/RMSE 기준 가장 안정적
+  - **B. NEW (rejected)** 5건: refinement 시도되었으나 holdout 개선 없어 미적용. 전역 정합은 성립하나 seam-local 품질은 A보다 불리
+  - **C. OLD (no refinement)** 3건: 과거 파이프라인 결과. 현재 운영 기준과 직접 수치 비교 대상이 아니라 참고 이력으로 취급
+- 클러스터 A와 B/C는 평가 창(max_corr)과 파이프라인 설정이 달라 fitness 값끼리 직접 비교 불가. 최종 품질은 seam NN/RMSE/corridor로 판단
+- Report JSON에 `pipeline_metadata` 블록 추가 (quality_gate_version, icp_stages, seam_threshold_version) — 향후 baseline 변경 시 추적 가능
+
+**NACHI MZ07L Mech-Viz 통합 — 5월 진행**
+- Nachi 통합 방향 확정 — Mech-Viz / Mech-Mind 공식 adapter 경유 (MZ07L). 직접 1100 UDP 송신은 mock/legacy 경로로 한정
+- MZ07L workspace sanity gate (`scripts/check_mz07l_workspace.py`), `T_robot_camera` transform 적용 경로 (mechviz_runtime 진입부에서 robot frame 변환)
+- Mech-Viz GUI blocked-state 안정화 — gate fail 시 false progress 방지
+- C# `ROBOT_DELIVERY_MODE` 토글 (`udp_1100` / `mechviz_nachi` / fail-closed), Windows 빌드 3-mode 동작 검증 완료
+- 본사 현장 패키지 구성 — `NACHI_MZ07L_FIELD_PACK_20260520` (quickstart, pose 세트, adapter, config, log template)
+- MZ07L 모델 실제 존재 확인 (2026-05-18) — MZ12 대체 가정 폐기, 실제 모델 기준으로 재정렬
+- MZ07L 전용 robot base offset 분리 (대형 모델용 offset이 MZ07L에도 적용되던 문제 보완) — `4ebb297`
+- Mech-Viz OuterMoveService 로그 자동 PASS/PARTIAL/FAIL 판정 도구 (`scripts/summarize_mechviz_dryrun_log.py`) — `d154c3b`
+- 로컬 시뮬 dry-run 3개 부위 phase3_first5 PASS (2026-05-26) — `U1_right` / `U2_left` / `S5_long_bottom_steps` 각 5/5 pose 전달 OK. 현재 임시 +300mm X/Y 이격 셀 기준이며, 실 데모 셀(작업물 위치/지그/테이블/TCP/장애물) 정교화는 별도 항목으로 잔존
+- 월간 보고서 `docs/SIM_REPORT_NACHI_2026-05.md` (+ `.docx`) 마감 — 본사 방문 일정 미확정 구간의 로컬 사전 검증 진행을 정리
+
 ### 3.2 검증 결과
-- **Python 테스트**: 105 tests PASS
+- **Python 테스트**: 220 tests collected (직전 전체 PASS 시점은 5/19 `d154c3b` 38 추가 통과 기준 164. 220 기준 전체 실행은 별도 확인 필요)
 - **C# 빌드**: Build succeeded
 - **E2E 9케이스**: OK/NG/NG_AVG/STALE/INVALID/ICP_LOW/ICP_HIGH/ICP_BAD/ICP_MISSING 전부 PASS
 - **Mech-Viz 시뮬**: U1+U2 smooth motion, 충돌 0
 
 ### 3.3 남은 이슈
-1. **생산 seam 정의 미확정** — 현재 `U1/U2/S4/S5`는 운영 후보 수준까지 왔지만, drawing-confirmed production seam는 아직 아님
-2. **로봇 미확보** — Hand-Eye Calibration, 실좌표 시뮬, 현장 테스트 전부 블로킹
-3. **Mech-Viz cell 정교화** — TCP, 토치 충돌 모델, 지그/테이블 장애물이 아직 임시
-4. **measured centerline 부재** — 현재 `centerline/tangent`는 CAD nominal seam 기준 transfer metric이며, 실제 measured seam 중심선과의 비교는 아직 없음
-5. **운영 Golden PCD / 설치 기준 확정 전** — 현재 ref PCD는 개발 기준이며, 현장 운영 기준(Golden PCD) 확정이 필요
+1. **생산 seam 정의 대기** — 운영 세트 `U1_right/U2_left/S5` 확정, S1/S2 deprecated. Drawing-confirmed production seam는 아직 미확인
+2. **U2_left ~1.0mm 한계** — CAD seam 정의 문제 의심, CloudCompare 검증 필요
+3. **로봇 확보 진행 (부분 해소)** — 본사 NACHI MZ07L로 검증 대상 확정 (2026-05, Hyundai HS-180 가정 폐기). Mech-Viz 라이브러리에 MZ07L 모델 실제 설치 확인 (2026-05-18). 로컬 시뮬 사전 검증은 시나리오 B로 진행 중 (`SIM_REPORT_NACHI_2026-05.md`). Hand-Eye Calibration과 현장 테스트는 본사 방문 일정 확정까지 보류
+4. **Mech-Viz cell 정교화** — TCP, 토치 충돌 모델, 지그/테이블 장애물이 아직 임시
+5. **measured centerline 부재** — 현재 `centerline/tangent`는 CAD nominal seam 기준 transfer metric이며, 실제 measured seam 중심선과의 비교는 아직 없음
+6. **운영 Golden PCD / 설치 기준 확정 전** — 현재 ref PCD는 개발 기준이며, 현장 운영 기준(Golden PCD) 확정이 필요
+7. **시뮬 셀 임시 설정** — 5/26 3-seam PASS는 작업물을 +300mm X/Y 이격한 임시 셀 기준. 실제 데모 셀(작업물 위치, 지그, 테이블, TCP, 장애물 모델)로 옮기는 작업 잔존
+8. **본사 방문 일정 미확정** — 2026-05-19 방문 연기 이후 재확정 전. Hand-Eye Calibration·실로봇 통신 검증은 일정 확정 후 진행, 그동안은 로컬 사전 검증 보완
 
 ## 4. 전략 원칙
 
@@ -145,8 +181,8 @@ Robot READY → DTS → Adapter → Mech(101/102) → Adapter(정규화) → DTS
 | 월 | 단계 | 핵심 목표 | 완료 기준 |
 |---|---|---|---|
 | M1 (3월) | Windows MVP 확정 + 재현성 확보 | GAP_JSON Windows/WSL 공용 경로 고정, Windows E2E 자동 실행, 안전 케이스 증적(PROTOCOL_UNKNOWN/POSE_OUT_OF_RANGE), 배포 가이드 | Windows E2E OK/NG/STALE 3/3 PASS, 안전 케이스 2개 증적, 배포 가이드 완성 |
-| M2 (4월) | 실환경 준비 (자세/ICP 기준 확정) | HS-180 Euler convention 실장비 확인, 실데이터로 ICP 임계값 튜닝/고정 (`ICP_FITNESS_MIN`/`ICP_INLIER_RMSE_MAX` 실물 샘플 3개 재산정), Mech 실제 연결 리허설(101/102) | Euler convention 확정, ICP 임계값 "추천값+근거 데이터" 문서화 |
-| M3 (5월) | 실장비 검증 Go/No-Go | 실 Mech-Vision 연결, 실 로봇 1100 수신, OK/NG/STALE 각 5회+ 검증 | 실로봇 1회 실행 성공(또는 현장 패키지 30분 내 재현) + 연속 30사이클 타임아웃 0, StopLatch 100% |
+| M2 (4월) | 실환경 준비 (자세/ICP 기준 확정) | ICP 임계값 quality_gate_v2 확정 (12-capture baseline), alignment precheck + diagnosis 자동화, batch 검증 | ICP 임계값 확정 ✅, precheck/diagnosis ✅, batch 검증 ✅ |
+| M3 (5월) | NACHI 실장비 검증 Go/No-Go | Mech-Viz 경유 MZ07L dry-run 준비, ROBOT_DELIVERY_MODE 토글, full transform 구조, 현장 패키지 | 실로봇 1회 실행 성공(또는 현장 패키지 30분 내 재현) + Mech-Viz/Nachi 경로 통신 검증 + StopLatch 100% |
 | M4 (6월) | 안정성 확인 + 카메라 선정 + 파이프라인 확정 | 5회 반복 RMS ≤ 0.5mm, 카메라 A/B 최종 선정, 단일 파이프라인 E2E 재현 | RMS ≤ 0.5mm, 카메라 선정 문서, E2E 통과 |
 | M5 (7/1~7/24) | 인수인계 + 문서화 (**계약 종료 7/24**) | 운영 매뉴얼, 인수인계 패키지(`sample_bundle/`), 30분 재현 리허설 | 30분 내 재현 가능, 7/24 내 완료 |
 
